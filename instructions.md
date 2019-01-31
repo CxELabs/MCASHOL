@@ -501,9 +501,9 @@ Conditional Access App Control enables user app access and sessions to be **moni
 
    !IMAGE[Open Screenshot](\Media\appc-office-6.png)
 
-1. [] Click on **Create Polic** and click on **Session policy**.
+1. [] Click on **Create Policy** and click on **Session policy**.
 
-        ^IMAGE[Open Screenshot](\Media\appc-office-7.png)
+     ^IMAGE[Open Screenshot](\Media\appc-office-7.png)
 
     1. **Name**: ```Proxy - Block sensitive files download```
 
@@ -634,14 +634,24 @@ Cloud App Security now integrates with Microsoft Flow to provide centralized ale
 
 !IMAGE[Menu](\Media\flow1.png)
 
-In this lab, we will automate alerts resolution for one of the policy we created in the previous exercise with **Flow**.
+===
+
+# Integrating Microsoft Flow with Cloud App Security
+[:arrow_left: Home](#labs)
+
+In this lab, we will automate alerts resolution for one of the policy we created in the previous exercise using Cloud App Security integration with **Microsoft Flow**.
+
+* [Create a Teams channel for your SOC team](#create-a-teams-channel-for-your-soc-team)
+* [Generate a security token](#generate-a-security-token)
+* [Create a Flow posting alerts in Microsoft Teams](#create-a-flow-posting-alerts-in-microsoft-teams)
+* [Configure a policy to use Flow](#configure-a-policy-to-use-flow)
+* [Test the created Flow execution](#test-the-created-flow-execution)
+* [Verify the message in Teams](#verify-the-message-in-teams)
 
 ===
 
-# Create your first Flow
-[:arrow_left: Home](#labs)
-
 ## Create a Teams channel for your SOC team
+[:arrow_left: Flow lab](#integrating-microsoft-flow-with-cloud-app-security)
 
 to complete
 teams1.png => 4
@@ -649,6 +659,7 @@ teams1.png => 4
 ---
 
 ## Generate a security token
+[:arrow_up: Top](#create-a-teams-channel-for-your-soc-team)
 
 1. [] Go to Cloud App Security ```https://portal.cloudappsecurity.com```, click on the **Gear** icon and click on **Security extensions**.
   
@@ -668,7 +679,8 @@ teams1.png => 4
 
 ---
 
-## Create a Flow
+## Create a Flow posting alerts in Microsoft Teams
+[:arrow_up: Top](#create-a-teams-channel-for-your-soc-team)
 
 1. [] Open a **new tab** in your browser and go to Cloud App Security ```https://portal.cloudappsecurity.com```. Click on the **Gear** icon and click on **Security extensions**.
   
@@ -712,18 +724,85 @@ teams1.png => 4
 
     !IMAGE[Open Screenshot](\Media\flow13.png)
 
+    > [!KNOWLEDGE] We are here using Flow to post messages containing **information about the alert** in **Microsoft Teams**. As Flow integrates with hundreds of 3rd party connectors, you could do the same with Exchange Online, Slack, ServiceNow, Jira and more !
+
 1. [] Customize the message to post.
-    
+
     1. **Team id**: select **Soc team**
-    
+
     1. **Channel id**: select **General**
 
-    1. **Message**: select **Description, PI address and Alert type**.
+    1. **Message**: select **Description, IP address and Alert type**.
 
     !IMAGE[Open Screenshot](\Media\flow14.png)
 
+    > [!HINT] For this exercise, we are posting basic information in Teams but you could use the Azure AD connector to get more information about the user and then configuring it to use MFA for example.
 
-> [!NOTE] **Congratulations**! You have completed the **Automate alerts management with Microsoft Flow lab**.
+1. [] Click on the **Save** button.
+
+    ^IMAGE[Open Screenshot](\Media\flow13.png)
+
+1. [] **Close** the Flow page.
+
+---
+
+## Configure a policy to use Flow
+[:arrow_up: Top](#create-a-teams-channel-for-your-soc-team)
+
+1. [] Go back to Cloud App Security ```https://portal.cloudappsecurity.com``` and go to the **Policy** section.
+  
+   ^IMAGE[Open Screenshot](\Media\flowpolicy1.png)
+
+1. [] Open the **Proxy - Block sensitive files download** App Control policy that we created in the previous lab.
+
+    ^IMAGE[Open Screenshot](\Media\flowpolicy2.png)
+
+1. [] Go to the bottom of the page, check the **Send alerts to Flow** checkbox, **select the Flow you created** and click **Update**.
+
+    ^IMAGE[Open Screenshot](\Media\flowpolicy3.png)
+
+===
+
+## Test the created Flow execution
+
+1. [] Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
+  
+   >```@lab.CloudCredential(134).Username```
+   >
+   >```@lab.CloudCredential(134).Password```
+
+1. You should receive the following message, as you are redirected through Cloud App Security before accessing the application.
+  
+  Click **Continue to Exchange Online**.
+
+   !IMAGE[Warning](\Media\appc-office-12.png)
+
+1. [] You are now directed to Exchange Online and your session is now passing **through** Cloud App Security.
+
+   !IMAGE[Session](\Media\appc-office-13.png)
+
+    1. Open the message we sent during the **previous lab**. Try to download the **Personal employees information.docx** document. As this file contains social security numbers, the download will be blocked and will trigger an alert in Cloud App Security. This alert should **trigger our Flow** and post a message in Teams.
+
+       !IMAGE[Test](\Media\appc-office-16.png)
+    
+       !IMAGE[Test](\Media\appc-office-17.png)
+
+---
+
+## Verify the message in Teams
+[:arrow_up: Top](#test-the-created-flow-execution)
+
+1. [] Open a **new tab** in your browser and go to ```https://teams.microsoft.com```.
+
+1. [] Go to the **SOC team** Team and open the **General** channel.
+
+    ^IMAGE[Open Screenshot](\Media\flowalert1.png)
+
+1. [] In the **General** channel you can see now that the **Flow** posted a new message with the **alert information** you configured.
+
+    !IMAGE[Open Screenshot](\Media\flowalert2.png)
+
+> [!NOTE] **Congratulations**! You have completed the **Automate alerts management with Microsoft Flow lab** where we discovered the power of the integration between Cloud App Security and Microsoft Flow.
 
 ===
 
