@@ -838,18 +838,15 @@ Those policies are enabled by default and after an initial learning period, Clou
 
 ===
 
-> [!ALERT] It can take **up to 24 hours** for the auditing in Office 365 to be configured, meaning that Cloud App Security will not receive the activities events. As many alerts relies on activities events to work, we will be using a pre-populated tenant for this portion of the lab so we can see alerts and have the ability to investigate them.
+> [!ALERT] It can take **up to 24 hours** for the auditing in Office 365 to be configured, meaning that Cloud App Security will not receive the activities events. As many alerts relies on activities events to work, we will be **using a pre-populated tenant** for this portion of the lab so we can see alerts and have the ability to investigate them.
 
 > [!HINT] LOG OUT OF YOUR CURRENT CLOUD APP SECURITY TENANT AND LOG BACK IN USING THE CREDENTIALS BELOW.
 
-|Portal               |Username                   |Password
-|----------------- |----------------------------------- |---------------------
-| ```https://portal.cloudappsecurity.com``` | viewer@emslab.tech |EventP@ssword
-
-**URLs**
-
-* Office 365: ```https://portal.office.com```
-* Cloud App Security: ```https://portal.cloudappsecurity.com```
+> **Portal**: ```https://portal.cloudappsecurity.com```
+>
+> **Username**: ```@lab.CloudCredential(134).Password```
+>
+> **Password**: ```EventP@ssword```
 
 ## Labs
 
