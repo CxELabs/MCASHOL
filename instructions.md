@@ -263,13 +263,7 @@ Once the logs have been analyzed, Cloud App Security provides the visibility on 
 # Cloud App Security Discovery Lab
 [:arrow_left: Discovery lab](#cloud-app-security-discovery)
 
-* [Cloud Discovery Snapshot Report](#cloud-discovery-snapshot-report)
-* [Configure and Test Continuous Reports](#configure-and-test-continuous-reports)
-
-===
-
 # Cloud Discovery Snapshot Report
-[:arrow_left: Discovery lab](#cloud-app-security-discovery-lab)
 
 In this lab, we will create a Discovery **Snapshot report**.
 Snapshot Reports is the manual method of uploading files into Cloud App Security. This process is a great and easy way to validate your logs format of have a quick look at the Cloud App Security Discovery capability.
@@ -285,7 +279,7 @@ To create snapshot reports:
 
     >|||
     >|---------|---------|
-    >|Report Name| ```**Demo report**```|
+    >|Report Name| ```Demo report```|
     >|Description| 
     >|Data Source| **SQUID (Common)**|
     >|Anonymize private information |**Check the Box**|
@@ -314,7 +308,9 @@ To create snapshot reports:
 
     !IMAGE[Report processing](\Media\dis-reportready.png "Report processing")
 
-1. [] Once your report is marked as ready, click on the text **Ready**. You will be redirected to your snapshot report where you can start exploring the discovered apps, users, IPs. Your instructor can give you more details on how to use the dashboard.
+1. [] Once your report is marked as ready, click on the text **Ready**. You will be redirected to your snapshot report where you can start exploring the discovered apps, users, IPs.
+ 
+    > [!NOTE] If after a couple of minutes the status hasn't change, **refresh** the page in your browser.
 
     ^IMAGE[Open Screenshot](\Media\dis-reportready2.png "Report ready")
 
@@ -322,10 +318,92 @@ To create snapshot reports:
 
     !IMAGE[Report dashboard -risk](\Media\dis-risk.png "Report dashboard - risk")
 
+---
+
+# Review the discovered apps
+[:arrow_up: Top](#cloud-app-security-discovery-lab)
+
+After network logs have been parsed, Cloud App Security provides reports on the applications used within the company.
+In this section, we will explore how you can review the discovered apps and categorize them.
+
+1. [] On the **Dicovery dashboard**, Cloud App Security shows a summary or the discovered apps, their risks and categories.
+
+    !IMAGE[Dashboard](\Media\review1.png "Dashboard")
+
+1. [] Click on the **Discovered apps** tab
+
+    ^IMAGE[Open Screenshot](\Media\review2.png "Report")
+
+1. [] You have here discovered apps and their risk scores, calculated using different criteria like **General**, **Security**, **Compliance** and **Legal** capabilities of the apps.
+
+1. [] Click on **Microsoft SharePoint Online**. You can see the different capabilities of the app assessed by Cloud App Security.
+
+    > [!KNOWLEDGE] The **green checkmark** indicate that this application is **Sanctioned** (approved and managed by the company IT).
+
+    ^IMAGE[Open Screenshot](\Media\review3.png "Report")
+
+    !IMAGE[SharePoint](\Media\review4.png "Report")
+
+1. [] Go back to the top of the page and search for apps with a **Risk score** between **0 and 3**. Those apps are considered as **High risk** apps.
+
+    ^IMAGE[Open Screenshot](\Media\review5.png "Report")
+
+1. [] On the left of the screen, you can see the different **categories** of those high risk apps. Click on **Cloud storage** to discover risky apps used within the company to store files.
+
+    ^IMAGE[Open Screenshot](\Media\review6.png "Report")
+
+1. [] Review the apps capabilities. You can see for this example that the app do not provide **auditing** or **SAML suppport for SSO** capabilities which are probably required to be acceptable in your organization.
+
+    !IMAGE[Review](\Media\review7.png "Report")
+
+1. [] As those apps are not compliant with your organization requirements, **tag** those apps as **Unsanctioned** (not managed and accepted by the company IT).
+
+    !IMAGE[Review](\Media\review8.png "Report")
+
+    > [!KNOWLEDGE] This app classification can be automated using **automatic** logs upload and **Discovery policies**, which we do not cover in this lab but that are normally used in production environments.
+
+1. [] Now that we have classified our apps, Cloud App Security can generate **block scripts** for configuring your network appliance to prevent your users to access those apps.
+
+1. [] Click on this icon at the top of the page and select **Generate block script**.
+
+    !IMAGE[Review](\Media\review9.png "Report")
+
+1. [] Select **PA Series Firewall**. This will generate a configuration script for **Palo Alto firewalls** with the apps domains or IPs to block.
+
+    ^IMAGE[Open Screenshot](\Media\review10.png "Report")
+
+1. [] **Open** the generated script. You can see here the domains to block to prevent access to the apps marked as **Unsantionned**.
+
+    ^IMAGE[Open Screenshot](\Media\review11.png "Report")
+
+1. [] Select **PA Series Firewall**. This will generate a configuration script for **Palo Alto firewalls** with the apps domains or IPs to block.
+
+    ^IMAGE[Open Screenshot](\Media\review12.png "Report")
+
+---
+
+# Generate Cloud Discovery executive reports
+[:arrow_up: Top](#cloud-app-security-discovery-lab)
+
+In this task we will generate a detailed **report** that can be sent to your company executives.
+This report contains information about the discovered apps, their risks and usage and the **recommended actions**.
+
+1. [] Click on this icon at the top of the page and select **Generate Cloud Discovery executive reports**. Cloud App Security will then create a **PDF report** that can be sent to your management. 
+
+    !IMAGE[Review](\Media\review13.png "Report")
+
+1. [] Open the generated report and review its content.
+
+   !IMAGE[Review](\Media\review14.png "Report")
+
+   !IMAGE[Review](\Media\review15.png "Report")
+
+> [!NOTE] **Congratulations**! You have completed the **Cloud Discovery lab**.
+
 ===
 
 # Conditional Access App Control with Office 365
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security) :clock10: 15 min
+[:arrow_left: MCAS Home](#microsoft-cloud-app-security)
 
 ## Introduction
 
@@ -547,11 +625,15 @@ Now that we validated our configuration, let's go back to the admin view.
 
         !IMAGE[Menu](\Media\appc-admin-6.png)
 
+> [!NOTE] **Congratulations**! You have completed the **Conditional access App Control lab**.
+
 ===
 
 # Automate alerts management with Microsoft Flow
 
 to do (Seb)
+
+> [!NOTE] **Congratulations**! You have completed the **Automate alerts management with Microsoft Flow lab**.
 
 ===
 
@@ -880,6 +962,8 @@ Cloud App Security provides by default many has policies templates to start crea
 
 7. [] Explore other types of policies and review the proposed templates.
 
+> [!NOTE] **Congratulations**! You have completed the **Threats protection lab**.
+
 ===
 
 # Information Protection
@@ -1046,50 +1130,26 @@ We are now going to test our files policies by performing the following actions.
 
     !IMAGE[Matches](\Media\info=matches.png)
 
+> [!NOTE] **Congratulations**! You have completed the **Information Protection lab**.
+
 ===
 
-# Management with PowerShell
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security)) :clock10: 15 min
+# Cloud App Security lab completed
 
-To help administrators interact with MCAS in a programmatic way, two
-Microsoft employees created a non-official PowerShell module for Cloud
-App Security. For this lab, you will install this module and discover
-the available cmdlets.
+Congratulations! You have completed the Microsoft Cloud App Security Hands on Lab.
+To go further in your Cloud App Security journey, visit the following links:
 
-Note: the module relies on the Cloud App Security API. You can find its
-documentation in the MCAS portal.
+* **Get started with a free trial**
+    aka.ms/mcastrial
 
-!IMAGE[f847xhzx.jpg](\Media\f847xhzx.jpg)
+* **Learn more about Microsoft Cloud App Security**
+    aka.ms/mcastech
 
-The module is available in the PowerShell gallery and can be installed
-using the ```*Install-Module mcas*``` command.
+* **Join the conversation on TechCommunity!**
+    aka.ms/mcascommunity
 
-!IMAGE[6j16dgs2.jpg](\Media\6j16dgs2.jpg)
+* **Stay up to date and subscribe to our blog!**
+    aka.ms/mcasblog
 
-More information on the module is available on GitHub:
-[https://github.com/powershellshock/MCAS-Powershell](https://github.com/powershellshock/MCAS-Powershell)
-
-After installing the module, read how to connect to MCAS in the
-PowerShell help and start exploring the cmdlets.
-
-Hint: you'll have to create an API token in Cloud App Security.
-
-!IMAGE[0x2tzeqd.jpg](\Media\0x2tzeqd.jpg)
-
-Using PowerShell:
-
-1.  [] Review the list of MCAS administrators and when they were granted
-    those permissions
-
-2.  [] Review your security alerts and close them in bulk
-
-3.   [] Download a sample SQUID log and send it to MCAS as a snapshot
-    report.
-
-4.   [] In the portal, in Discovery, tag some apps as unsanctioned and
-    generate a blocking script for your appliance to block access to
-    those apps.
-
-5.   [] You are asked to define corporate IP's in MCAS. Subnets go from
-    10.50.50.0/24 to 10.50.80.0/24
-
+* **Visit our Website**
+    aka.ms/mcas
