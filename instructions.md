@@ -630,7 +630,7 @@ Now that we validated our configuration, let's go back to the admin view.
 # Automate alerts management with Microsoft Flow
 [:arrow_left: Home](#labs)
 
-Cloud App Security now integrates with Microsoft Flow to provide centralized alert automation and orchestration of custom workflows for 1st party and more than 100 3rd party connectors!
+Cloud App Security integrates now with Microsoft Flow to provide custom alert **automation and orchestration playbooks**. By using the ecosystem of connectors available in Microsoft Flow, you can automate the triggering of playbooks when Cloud App Security generates alerts. For example, automatically create an issue in ticketing systems using ServiceNow connector or send an approval email to execute a custom governance action when an alert is triggered in Cloud App Security.
 
 !IMAGE[Menu](\Media\flow1.png)
 
@@ -653,8 +653,30 @@ In this lab, we will automate alerts resolution for one of the policy we created
 ## Create a Teams channel for your SOC team
 [:arrow_left: Flow lab](#integrating-microsoft-flow-with-cloud-app-security)
 
-to complete
-teams1.png => 4
+For this lab, we'll need to create a new Teams' team for our SOC where Cloud App Security **alerts** will be posted, using Microsoft Flow automation.
+
+1. [] Open a **new tab** in your browser and go to ```https://teams.microsoft.com```. If needed, connect using:
+
+    >```@lab.CloudCredential(134).Username```
+    >
+    >```@lab.CloudCredential(134).Password```
+
+1. [] Click on the **Teams icon** and click on the **Create team** button.
+
+    ^IMAGE[Open Screenshot](\Media\teams1.png)
+
+1. [] For the team's **name** use ```SOC team``` and keep **Privacy** at **Private**. Click then on **Next**.
+
+    ^IMAGE[Open Screenshot](\Media\teams2.png)
+
+1. [] On the **Add members to SOC team** page, click on the **Skip** button.
+
+    ^IMAGE[Open Screenshot](\Media\teams3.png)
+
+1. [] You can now see that you just created a new team named **SOC team** with a channel named **General**
+
+    ^IMAGE[Open Screenshot](\Media\teams4.png)
+
 
 ---
 
@@ -764,6 +786,7 @@ teams1.png => 4
 ===
 
 ## Test the created Flow execution
+[:arrow_left: Flow lab](#integrating-microsoft-flow-with-cloud-app-security)
 
 1. [] Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
