@@ -677,7 +677,6 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
     ^IMAGE[Open Screenshot](\Media\teams4.png)
 
-
 ---
 
 ## Generate a security token
