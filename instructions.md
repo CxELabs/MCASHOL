@@ -1,12 +1,5 @@
 # Implementing Microsoft Cloud App Security
 
-## Self paced lab LAB - MCASHOL
-
-## Introduction
-
-# Microsoft Cloud App Security
-[:arrow_left: Home](#introduction)
-
 ## Introduction
 
 Microsoft Cloud App Security is Microsoft **CASB** (Cloud Access Security Broker) and is a critical component of the Microsoft Cloud Security stack.
@@ -16,6 +9,7 @@ With tools that help uncover shadow IT, assess risk, enforce policies, investiga
 The diagram below describe typical use cases for CASB's.
 
 !IMAGE[MCAS intro](\Media\mcasintro-1.png "MCAS intro")
+
 
 This lab will guide you through some of Microsoft Cloud App Security (MCAS) capabilities and top use cases.
 
@@ -60,7 +54,8 @@ There are also Knowledge Items, Notes, and Hints throughout the lab.
 
 	!IMAGE[w11x99oo.jpg](\Media\w11x99oo.jpg)
 
----
+===
+
 # Lab
 
 This lab is designed to be used as a supplement to Instructor Led Training and has several sections that you will go through over the next hour. Please click the links below to first prepare your environment and then go through different tasks to explore Microsoft Cloud App Security capabilities.  
@@ -77,11 +72,6 @@ This lab is designed to be used as a supplement to Instructor Led Training and h
 [:arrow_left: Home](#introduction)
 
 There are a few prerequisites that need to be set up to complete all the sections in this lab. This Exercise will walk you through the items below.
-
----
-
-# MCAS Environment Preparation
-[:arrow_left: Home](#lab-environment-configuration)
 
 To be able to complete the different parts of the Cloud App Security labs, the following configuration steps are required.
 
