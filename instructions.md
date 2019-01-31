@@ -227,12 +227,7 @@ The different Cloud App Security capabilities covered in the labs are:
 * [Threats Protection](#threats-protection)
 * [Information Protection](#information-protection)
 
-### Optional/Follow on labs
-
-* [Management with PowerShell](#management-with-powershell)
-* [Log collector troubleshooting](#log-collector-troubleshooting)
-
->:question: If you have questions or want to go further in your Cloud App Security journey, join our **[Tech community](https://techcommunity.microsoft.com/t5/Microsoft-Cloud-App-Security/bd-p/MicrosoftCloudAppSecurity)** !
+> [!HINT] If you have questions or want to go further in your Cloud App Security journey, join our **[Tech community](https://techcommunity.microsoft.com/t5/Microsoft-Cloud-App-Security/bd-p/MicrosoftCloudAppSecurity)** !
 
 ===
 
@@ -422,6 +417,9 @@ Conditional Access App Control enables user app access and sessions to be **moni
 ===
 # App Control Lab
 [:arrow_left: Home](#labs)
+
+In this lab, we will implement **Conditional Access App Control** to prevent the download of sensitive documents stored in Office 365 when a user is connecting from a **non-corporate** device, like in a **Bring Your Own Device** scenario.
+The different steps of this lab are:
 
 * [App Control Configuration](#app-control-configuration)
 * [Testing the Session Policy](#testing-the-session-policy)
@@ -848,7 +846,9 @@ Those policies are enabled by default and after an initial learning period, Clou
 >
 > **Password**: ```EventP@ssword```
 
-## Labs
+## Lab
+
+Using the pre-populated environment, we will here simulate a security analyst investigation through the alerts below:
 
 * [Anonymous access:](#anonymous-access)
 * [Impossible travel:](#impossible-travel)
