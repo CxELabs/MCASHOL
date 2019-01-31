@@ -216,7 +216,6 @@ To prepare the **Information Protection** lab, we have to enable the integration
 ===
 
 ## Labs
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security)
 
 > [!ALERT] Before going to the different labs section, please be sure to complete the **[environment preparation](#mcas-environment-preparation)**.
 
@@ -238,7 +237,6 @@ The different Cloud App Security capabilities covered in the labs are:
 ===
 
 # Cloud App Security Discovery
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security)
 
 On average, more than 1,100 cloud applications are used by enterprises today, of which 61% are **not** sanctioned by IT. This results in duplicate capabilities, apps not meeting compliance standards or posing a security risk to the organization without any IT oversight.
 **Discovery** identifies current cloud apps, provides risk assessments and ongoing analytics and lifecycle management capabilities to control the use.
@@ -260,10 +258,9 @@ Once the logs have been analyzed, Cloud App Security provides the visibility on 
 > [!NOTE] In this lab, we will simulate the upload of network logs from a SQUID proxy to analyze the apps used withing your company. We will not test the Windows Defender ATP integration at it can take up to **2h** before the logs are parsed and the results are visible in the console.
 
 ===
-# Cloud App Security Discovery Lab
+# Cloud Discovery Snapshot Report
 [:arrow_left: Discovery lab](#cloud-app-security-discovery)
 
-# Cloud Discovery Snapshot Report
 
 In this lab, we will create a Discovery **Snapshot report**.
 Snapshot Reports is the manual method of uploading files into Cloud App Security. This process is a great and easy way to validate your logs format of have a quick look at the Cloud App Security Discovery capability.
@@ -403,7 +400,7 @@ This report contains information about the discovered apps, their risks and usag
 ===
 
 # Conditional Access App Control with Office 365
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security)
+[:arrow_left: Home](#labs)
 
 ## Introduction
 
@@ -424,7 +421,7 @@ Conditional Access App Control enables user app access and sessions to be **moni
 
 ===
 # App Control Lab
-[:arrow_left: Discovery lab](#cloud-app-security-discovery)
+[:arrow_left: Home](#labs)
 
 * [App Control Configuration](#app-control-configuration)
 * [Testing the Session Policy](#testing-the-session-policy)
@@ -432,6 +429,7 @@ Conditional Access App Control enables user app access and sessions to be **moni
 ===
 
 ## App Control Configuration
+[:arrow_left: Home](#labs)
 
 1. [] Go to the Azure portal ```https://portal.azure.com``` and open the **Azure Active Directory** blade.
 
@@ -630,15 +628,107 @@ Now that we validated our configuration, let's go back to the admin view.
 ===
 
 # Automate alerts management with Microsoft Flow
+[:arrow_left: Home](#labs)
 
-to do (Seb)
+Cloud App Security now integrates with Microsoft Flow to provide centralized alert automation and orchestration of custom workflows for 1st party and more than 100 3rd party connectors!
+
+!IMAGE[Menu](\Media\flow1.png)
+
+In this lab, we will automate alerts resolution for one of the policy we created in the previous exercise with **Flow**.
+
+===
+
+# Create your first Flow
+[:arrow_left: Home](#labs)
+
+## Create a Teams channel for your SOC team
+
+to complete
+teams1.png => 4
+
+---
+
+## Generate a security token
+
+1. [] Go to Cloud App Security ```https://portal.cloudappsecurity.com```, click on the **Gear** icon and click on **Security extensions**.
+  
+   ^IMAGE[Open Screenshot](\Media\flow2.png)
+
+1. [] In the **API token** tab, click on the **+** icon to generate a new **token**.
+  
+   ^IMAGE[Open Screenshot](\Media\flow8.png)
+
+    > [!KNOWLEDGE] This **API token** will be used by **Flow** to access Cloud App Security alerts. The same token can be used to access Cloud App Security programmatically using PowerShell, for example.
+
+1. [] Name your token ```Flow``` and click on **Generate**.
+  
+   ^IMAGE[Open Screenshot](\Media\flow9.png)
+
+    > [!WARNING] **Do not close the window** as we will need this token later !
+
+---
+
+## Create a Flow
+
+1. [] Open a **new tab** in your browser and go to Cloud App Security ```https://portal.cloudappsecurity.com```. Click on the **Gear** icon and click on **Security extensions**.
+  
+   ^IMAGE[Open Screenshot](\Media\flow2.png)
+
+1. [] Click on the **Playbooks** tab and click on the **+** icon.
+
+    ^IMAGE[Open Screenshot](\Media\flow3.png)
+
+1. [] You are redirected to **Microsoft Flow** page. Click on the **Get started** button.
+
+    ^IMAGE[Open Screenshot](\Media\flow4.png)
+
+1. [] Click on the **New** button and select **Create from blank**.
+
+    ^IMAGE[Open Screenshot](\Media\flow5.png)
+
+1. [] Click on the **Create from blank**.
+
+    ^IMAGE[Open Screenshot](\Media\flow6.png)
+
+1. [] Search for the ```cloud app security``` **connector** and click on the **When an alert is generated** trigger.
+
+    !IMAGE[Open Screenshot](\Media\flow7.png)
+
+1. [] As **Connection name** use ```Lab``` and use the **API token** generated in the previous task. It should be in the **other open Cloud App Security tab** as we didn't close it.
+
+    !IMAGE[Open Screenshot](\Media\flow10.png)
+
+    ^IMAGE[Open Screenshot](\Media\flow9.png)
+
+1. [] **Flow** has now access to **Cloud App Security**.
+
+    !IMAGE[Open Screenshot](\Media\flow11.png)
+
+1. [] Click on **New step**.
+
+    !IMAGE[Open Screenshot](\Media\flow12.png)
+
+1. [] In the search bar, type ```teams```and click on **Post message**.
+
+    !IMAGE[Open Screenshot](\Media\flow13.png)
+
+1. [] Customize the message to post.
+    
+    1. **Team id**: select **Soc team**
+    
+    1. **Channel id**: select **General**
+
+    1. **Message**: select **Description, PI address and Alert type**.
+
+    !IMAGE[Open Screenshot](\Media\flow14.png)
+
 
 > [!NOTE] **Congratulations**! You have completed the **Automate alerts management with Microsoft Flow lab**.
 
 ===
 
 # Threats Protection
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security)
+[:arrow_left: Home](#labs)
 
 Cloud App Security provides several threats detection policies using machine learning and **user behavior analytics** to detect suspicious activities across your different applications.
 Those policies are enabled by default and after an initial learning period, Cloud App Security will start alerting you when suspicious actions like activity from anonymous IP addresses, infrequent country, suspicious IP addresses, impossible travel, ransomware activity, suspicious inBox forwarding configuration or unusual file download are detected.
@@ -709,7 +799,6 @@ As your authentication during the previous steps came from an anonymous IP addre
 ---
 
 ## Impossible travel
-
 [:arrow_up: Top](#threats-protection)
 
 This detection identifies two user activities (is a single or multiple sessions) originating from geographically distant locations within a time period shorter than the time it would have taken the user to travel from the first location to the second, indicating that a different user is using the same credentials. This detection uses a machine learning algorithm that ignores obvious "false positives" contributing to the impossible travel condition, such as VPNs and locations regularly used by other users in the organization. The detection has an initial learning period of seven days during which it learns a new user’s activity pattern.
@@ -754,7 +843,6 @@ As the first and the second authentication came from distinct locations, Cloud A
 ---
 
 ## Activity from infrequent country
-
 [:arrow_up: Top](#threats-protection)
 
 This detection considers past activity locations to determine new and infrequent locations. The anomaly detection engine stores information about previous locations used by users in the organization. An alert is triggered when an activity occurs from a location that wasn't recently or never visited by any user in the organization.
@@ -967,7 +1055,7 @@ Cloud App Security provides by default many has policies templates to start crea
 ===
 
 # Information Protection
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security)
+[:arrow_left: Home](#labs)
 
 In a perfect world, all your employees understand the importance of information protection and work within your policies. But in a real world, it's probable that a partner who works with accounting uploads a document to your Box repository with the wrong permissions, and a week later you realize that your enterprise's confidential information was leaked to your competition.
 Microsoft Cloud App Security helps you prevent this kind of disaster before it happens.
@@ -976,6 +1064,7 @@ Microsoft Cloud App Security helps you prevent this kind of disaster before it h
 
 ===
 ## Information Protection Lab
+[:arrow_left: Home](#labs)
 
 File policies are a great tool for finding threats to your information protection policies, for instance finding places where users stored sensitive information, credit card numbers and third-party ICAP files in your cloud. With Cloud App Security, not only can you detect these unwanted files stored in your cloud that leave you vulnerable, but you can take im/mediate action to stop them in their tracks and lock down the files that pose a threat.
 Using Admin quarantine, you can protect your files in the cloud and remediate problems, as well as prevent future leaks from occurring.
@@ -1135,21 +1224,17 @@ We are now going to test our files policies by performing the following actions.
 ===
 
 # Cloud App Security lab completed
+[:arrow_left: Home](#labs)
 
 Congratulations! You have completed the Microsoft Cloud App Security Hands on Lab.
 To go further in your Cloud App Security journey, visit the following links:
 
-* **Get started with a free trial**
-    aka.ms/mcastrial
+* **Get started with a free trial**: aka.ms/mcastrial
 
-* **Learn more about Microsoft Cloud App Security**
-    aka.ms/mcastech
+* **Learn more about Microsoft Cloud App Security**: aka.ms/mcastech
 
-* **Join the conversation on TechCommunity!**
-    aka.ms/mcascommunity
+* **Join the conversation on TechCommunity!**: aka.ms/mcascommunity
 
-* **Stay up to date and subscribe to our blog!**
-    aka.ms/mcasblog
+* **Stay up to date and subscribe to our blog!**: aka.ms/mcasblog
 
-* **Visit our Website**
-    aka.ms/mcas
+* **Visit our Website**: aka.ms/mcas
