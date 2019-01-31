@@ -4,13 +4,20 @@
 
 ## Introduction
 
-This lab is designed to be used as a supplement to Instructor Led Training and has several sections that you will go through over the next hour. Please click the links below to first prepare your environment and then go through different tasks to explore Microsoft Cloud App Security capabilities.  
+# Microsoft Cloud App Security
+[:arrow_left: Home](#introduction)
 
-### [Lab Environment Configuration](#lab-environment-configuration)
+## Introduction
 
-### [Lab: Microsoft Cloud App Security](#microsoft-cloud-app-security)
+Microsoft Cloud App Security is Microsoft **CASB** (Cloud Access Security Broker) and is a critical component of the Microsoft Cloud Security stack.
+It's a comprehensive solution that can help your organization as you move to take full advantage of the promise of cloud applications, but keeps you in control through improved visibility into activity. It also helps increase the protection of critical data across cloud applications (Microsoft **and** 3rd parties).
+With tools that help uncover shadow IT, assess risk, enforce policies, investigate activities, and stop threats, your organization can more safely move to the cloud while maintaining control of critical data.
 
-> [!ALERT] If you need to interrupt your lab, please ensure that you SAVE the session rather than END the lab.  If you end the lab, all configuration will be reset to initial state
+The diagram below describe typical use cases for CASB's.
+
+!IMAGE[MCAS intro](\Media\mcasintro-1.png "MCAS intro")
+
+This lab will guide you through some of Microsoft Cloud App Security (MCAS) capabilities and top use cases.
 
 ===
 
@@ -53,173 +60,35 @@ There are also Knowledge Items, Notes, and Hints throughout the lab.
 
 	!IMAGE[w11x99oo.jpg](\Media\w11x99oo.jpg)
 
+---
+# Lab
+
+This lab is designed to be used as a supplement to Instructor Led Training and has several sections that you will go through over the next hour. Please click the links below to first prepare your environment and then go through different tasks to explore Microsoft Cloud App Security capabilities.  
+
+### [Lab Environment Configuration](#lab-environment-configuration)
+
+### [Lab: Microsoft Cloud App Security](#microsoft-cloud-app-security)
+
+> [!ALERT] If you need to interrupt your lab, please ensure that you SAVE the session rather than END the lab.  If you end the lab, all configuration will be reset to initial state
+
 ===
 
 # Lab Environment Configuration
 [:arrow_left: Home](#introduction)
 
-There are a few prerequisites that need to be set up to complete all the sections in this lab.  This Exercise will walk you through the items below.
+There are a few prerequisites that need to be set up to complete all the sections in this lab. This Exercise will walk you through the items below.
 
-- [Azure AD User Configuration](#azure-ad-user-configuration)
-- [MCAS Environment Proparation](#mcas-environment-preparation)
-  
-===
-
-# Azure AD User Configuration
-[:arrow_left: Home](#lab-environment-configuration)
-
-In this task, we will create new Azure AD users and assign licenses via PowerShell.  In a procduction evironment this would be done using Azure AD Connect or a similar tool to maintain a single source of authority, but for lab purposes we are doing it via script to reduce setup time.
-
-1. [] Log into @lab.VirtualMachine(Scanner01).SelectLink using the password +++@lab.VirtualMachine(Client01).Password+++
-2. [] On the desktop, **right-click** on **AADConfig.ps1** and click **Run with PowerShell**.
-
-	!IMAGE[AADConfig](\Media\AADConfig.png)
-
-	> [!NOTE] If prompted to change the execution policy, type **y** and **Enter**.
-
-1. [] When prompted for the **Tenant name**, **click in the text box** and enter ```@lab.CloudCredential(134).TenantName```.
-1. [] When prompted, provide the credentials below:
-
-	```@lab.CloudCredential(134).Username```
-
-	```@lab.CloudCredential(134).Password``` 
-   
-	> [!KNOWLEDGE] We are running the PowerShell code below to create the accounts and groups in AAD and assign licenses for EMS E5 and Office E5. This script is also available at [https://aka.ms/labscripts](https://aka.ms/labscripts) as AADConfig.ps1.
-    > 
-    > #### Azure AD User and Group Configuration
-    > $tenantfqdn = "@lab.CloudCredential(134).TenantName"
-    > $tenant = $tenantfqdn.Split('.')[0]
-	> 
-    > #### Build Licensing SKUs
-    > $office = $tenant+":ENTERPRISEPREMIUM"
-    > $ems = $tenant+":EMSPREMIUM"
-	> 
-    > #### Connect to MSOLService for licensing Operations
-    > Connect-MSOLService -Credential $cred
-	> 
-    > #### Remove existing licenses to ensure enough licenses exist for our users
-    > $LicensedUsers = Get-MsolUser -All  | where {$_.isLicensed -eq $true}
-    > $LicensedUsers | foreach {Set-MsolUserLicense -UserPrincipalName $_.UserPrincipalName -RemoveLicenses $office, $ems}
-	> 
-    > #### Connect to Azure AD using stored credentials to create users
-    > Connect-AzureAD -Credential $cred
-	> 
-    > #### Import Users from local csv file
-    > $users = Import-csv C:\users.csv
-	> 
-    > foreach ($user in $users){
-    > 	
-    > #### Store UPN created from csv and tenant
-    > $upn = $user.username+"@"+$tenantfqdn
-	> 
-    > #### Create password profile preventing automatic password change and storing password from csv
-    > $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile 
-    > $PasswordProfile.ForceChangePasswordNextLogin = $false 
-    > $PasswordProfile.Password = $user.password
-	> 
-    > #### Create new Azure AD user
-    > New-AzureADUser -AccountEnabled $True -DisplayName $user.displayname -PasswordProfile $PasswordProfile -MailNickName $user.username -UserPrincipalName $upn
-    > }
-    > 
-    > #### MCAS user and group creation
-	> $upn = "mcasAdminUS@"+$tenantfqdn
-	> New-AzureADUser -AccountEnabled $True -DisplayName "MCAS US admin" -PasswordProfile $PasswordProfile -MailNickName "mcasadminUS" -UserPrincipalName $upn
-    > New-AzureADGroup -DisplayName "US employees" -MailNickName "USemployees" -SecurityEnabled $true -MailEnabled $false
-    > $groupId = Get-AzureADGroup -SearchString "usemployees"
-    > $userId = Get-AzureADUser -SearchString "mcasadminus"
-    > Add-AzureADGroupMember -RefObjectId $userId.ObjectId -ObjectId $groupId.ObjectId
-	> 
-	> Start-Sleep -s 10
-	> foreach ($user in $users){
-	> 
-    > #### Store UPN created from csv and tenant
-    > $upn = $user.username+"@"+$tenantfqdn
-	> 
-    > #### Assign Office and EMS licenses to users
-    > Set-MsolUser -UserPrincipalName $upn -UsageLocation US
-    > Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses $office, $ems
-    > }
-	> 
-    > #### Assign Office and EMS licenses to Admin user
-    > $upn = "admin@"+$tenantfqdn
-    > Set-MsolUser -UserPrincipalName $upn -UsageLocation US
-    > Set-MsolUserLicense -UserPrincipalName $upn -AddLicenses $office, $ems
-
-	> [!NOTE] The PowerShell window will automatically close once users have been created and licenses have been assigned.
-
-===
+---
 
 # MCAS Environment Preparation
 [:arrow_left: Home](#lab-environment-configuration)
 
 To be able to complete the different parts of the Cloud App Security labs, the following configuration steps are required.
 
-* [Enabling Office 365 Auditing](#enabling-office-365-auditing)
 * [Enabling File Monitoring](#enabling-file-monitoring)
 * [Create a Developer Box Account](#create-a-developer-box-account)
 * [Connect Office 365 and Box to Cloud App Security](#connect-office-365-and-box-to-cloud-app-security)
 * [Enabling Azure Information Protection integration](#enabling-azure-information-protection-integration)
-
----
-
-## Enabling Office 365 Auditing
-[:arrow_up: Top](#mcas-environment-preparation)
-
-Most Cloud App Security treat detections capabilities rely on auditing being enabled in your environment. By default, auditing is not enabled in Office 365 and must then be turned on using the **Security & Compliance** admin console or PowerShell.
-
-> [!ALERT] As this operation can take up to 24h, your instructor will provide you access to another environment to review the alerts for the threat detection lab.
-
-1. [] Switch to @lab.VirtualMachine(Client01).SelectLink and log in with the password +++@lab.VirtualMachine(Client01).Password+++.
-2. [] Open a new InPrivate tab and navigate to ```https://protection.office.com```.	
-	
-	> [!KNOWLEDGE] If needed, log in using the credentials below:
-	>
-	>```@lab.CloudCredential(134).Username```
-	>
-	>```@lab.CloudCredential(134).Password```
-
-4. [] In the **Security & Compliance Center**, Expand **Search & investigation** and click on **Audit log search**.
-   
-	^IMAGE[Audit log](\Media\conf-auditlog.png "Audit log")
-
-5. [] You can see here that auditing is not enabled. Click on the **Turn on auditing** button to enable it and click **yes** at the prompt.
-
-    ^IMAGE[Turn on auditing](\Media\conf-enableauditing.png "Turn on on auditing")
-
-    ^IMAGE[Auditing enabled](\Media\conf-auditenabled.png "Auditing enabled")
-
-    
-
-### Exchange Auditing Configuration
-[:arrow_up: Top](#mcas-environment-preparation)
-
-In addition to enabling auditing in Office 365, some applications like Exchange Online require extra configuration. After enabling auditing at the Office 365 level, we have to enable auditing at the mailBox level. We will perform this configuration before going to the labs.
-
-1. [] On the desktop, right-click on **EnableMailboxAudit.ps1** and click **Run with PowerShell**.
-
-1. [] When prompted, use the credentials below:
-
-	+++@lab.CloudCredential(134).Username+++
-
-	+++@lab.CloudCredential(134).Password+++
-
-	> [!KNOWLEDGE] The following commands will be run to connect to Exchange Online and Enable Mailbox Auditing on the Admin account.
-    >
-	> ```$UserCredential = Get-Credential```
-    >
-	> ```$Session = New-PSSession –ConfigurationName Microsoft.Exchange –ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential –Authentication Basic -AllowRedirection```
-	>
-	>```Import-PSSession $Session```
-    >
-	> ```Get-MailBox -ResultSize Unlimited -Filter {RecipientTypeDetails -eq "UserMailBox"} | Set-MailBox -AuditEnabled $true```
-    >
-	> ```Get-MailBox admin | fl audit*```
-    
-    > [!ALERT] When you create new mailBoxes, **auditing is not enabled** by default. You will have to use the same commands again to enable auditing for those newly created mailBoxes.
-
-    !IMAGE[MailBox auditing](\Media\MailboxAudit.png "MailBox Auditing")
-
->[!HINT] **Reference:** [Enabling auditing for Exchange Online mailBoxes](https://docs.microsoft.com/en-us/office365/securitycompliance/enable-mailBox-auditing?redirectSourcePath=%252fen-us%252farticle%252fenable-mailBox-auditing-in-office-365-aaca8987-5b62-458b-9882-c28476a66918).
 
 ---
 
@@ -239,7 +108,7 @@ In addition to enabling auditing in Office 365, some applications like Exchange 
 ## Create a Developer Box Account
 [:arrow_up: Top](#mcas-environment-preparation)
 
-1. [] Next, navigate to ```https://developer.box.com``` and click on **Get Started**. 
+1. [] Next, open a new tab in your browser and navigate to ```https://developer.box.com``` and click on **Get Started**. 
 
 	!IMAGE[Boxdev](\Media\box-getstarted.png)
 
@@ -253,21 +122,23 @@ In addition to enabling auditing in Office 365, some applications like Exchange 
 	^IMAGE[Open Screenshot](\Media\box-signup.png)
 
 3. [] In a new tab, browse to ```https://outlook.office365.com/OWA```. 
-1. [] Choose a time zone and click **Save**.
-1. [] In the MOD Admin inbox, click on **Other** mail, and click the **Verify Email** link in the email from Box.
+1. [] If prompted, choose a time zone and click **Save**.
+1. [] In the MOD Admin inbox, click on **Other** mail, search for the **Box** confirmation email and click the **Verify Email**. link in the email from Box.
 
 	^IMAGE[Open Screenshot](\Media\box-verify.png)
 
-1. [] In the new window that opens, enter ```@lab.CloudCredential(134).password``` in **each of the password boxes** and click the **Update** button. 
+1. [] In the new window that opens, enter the password to use with **Box**. We'll use ```@lab.CloudCredential(134).password``` in **each of the password boxes**. Click the **Update** button to save your password.
+
+1. [] You can now close the **Box** and **Office 365 mailbox** tabs.
 
 ---
 
 ## Connect Office 365 and Box to Cloud App Security 
 [:arrow_up: Top](#mcas-environment-preparation)
 
-To connect Cloud App Security to Office 365, you will have to use the Office 365 app connector. App connectors use the APIs of app providers to enable greater visibility and control by Microsoft Cloud App Security over the apps you connect to.  We will also use this method to show integration with the 3rd Party API for Box.
+To connect Cloud App Security to Office 365, you will have to use the Office 365 app connector. **App connectors** use the APIs of app providers to enable greater visibility and control by Microsoft Cloud App Security over the apps you connect to.  We will also use this method to show integration with the 3rd Party API for Box.
 
-1. [] Open a new in Private tab in your browser and navigate to ```https://portal.cloudappsecurity.com```
+1. [] Open a new tab in your browser and navigate to ```https://portal.cloudappsecurity.com```
 
 2. [] Go to the gear icon and select **App connectors**.
 
@@ -296,26 +167,29 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 	!IMAGE[2](\Media\box-connect.png)
 
-3. [] In the Instance name box, type ```Box API Demo```, and click **Connect Box**.
+1. [] In the Instance name box, type ```Box API Demo```, and click **Connect Box**.
 
 	^IMAGE[Open Screenshot](\Media\apiBox3.JPG)
 
-4. [] In the Connect Box dialog, click **follow this link**.
+1. [] In the Connect Box dialog, click **follow this link**.
 
 	!IMAGE[4](\Media\box-follow.png)
 
-5. [] Log into Box using the credentials below:
+1. [] Log into Box using the credentials below:
 
 	```@lab.CloudCredential(134).Username```
 
 	```@lab.CloudCredential(134).Password```
 
-6. [] Click on **Grant access to Box**
+1. [] Click on the **Authorize** button.
+
+1. [] Click on **Grant access to Box**
 
 	^IMAGE[Open Screenshot](\Media\box-grant.png)
 
-7. [] Close the Connect Box dialog and click on **Box API Demo** to expand.
-1. [] Click on the **Test now** link.
+1. [] Close the Connect Box dialog and click on **Box API Demo** to expand.
+
+1. [] Click on the **Test now** button.
 
 	^IMAGE[Open Screenshot](\Media\apiBox7.JPG)
 
@@ -323,7 +197,7 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 	>
 	> !IMAGE[8](\Media\apiBox8.JPG)
 
-8. []  Close the dialog and you should be able to see **Box API Demo** as a **Connected** app in the list. 
+1. []  Close the dialog and you should be able to see **Box API Demo** as a **Connected** app in the list. 
 
 	^IMAGE[Open Screenshot](\Media\apiBox9.JPG) 
 
@@ -334,59 +208,20 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 To prepare the **Information Protection** lab, we have to enable the integration between Cloud App Security and Azure Information Protection as explained in the [Cloud App Security documentation](https://docs.microsoft.com/en-us/cloud-app-security/azip-integration). Enabling the integration between the two solutions is as easy as selecting one single checkBox.
 
-1. [] Go to Cloud App Security settings.
+1. [] Click on the **Gear** icon and then **Settings**.
 
     !IMAGE[Settings](\Media\conf-settings.png "Settings")
 
 2. [] Go down in the settings to the **Azure Information Protection** section and check the **Automatically scan new files** checkBox and click on the "**Save** button.
     !IMAGE[Enable AIP](\Media\conf-aip.png "Enable AIP")
 
->:memo: It takes up to **1h** for Cloud App Security to sync the Azure Information classifications.
+>[!NOTE]: It can take up to **1h** for Cloud App Security to sync the Azure Information classifications.
 
-===
+---
 
 # Lab Environment Setup Complete
 
-The lab environment setup is now complete. In the next section you will start the lab.
-
-!IMAGE[Save](\Media\save.png)
-
-===
-
-# Microsoft Cloud App Security
-[:arrow_left: Home](#introduction)
-
-## Introduction
-
-Microsoft Cloud App Security is Microsoft **CASB** (Cloud Access Security Broker) and is a critical component of the Microsoft Cloud Security stack.
-It's a comprehensive solution that can help your organization as you move to take full advantage of the promise of cloud applications, but keeps you in control through improved visibility into activity. It also helps increase the protection of critical data across cloud applications (Microsoft **and** 3rd parties).
-With tools that help uncover shadow IT, assess risk, enforce policies, investigate activities, and stop threats, your organization can more safely move to the cloud while maintaining control of critical data.
-
-The diagram below describe typical use cases for CASB's.
-
-!IMAGE[MCAS intro](\Media\mcasintro-1.png "MCAS intro")
-
-This lab will guide you through some of Microsoft Cloud App Security (MCAS) capabilities and top use cases.
-
-===
-
-## Lab environment
-[:arrow_left: MCAS Home](#microsoft-cloud-app-security)
-
-!IMAGE[Lab environment](\Media\mcaslabenvironment.png "Lab environment")
-
-* **Client01** is a Windows 10 VM that will be used to access Office 365 and Cloud app Security management consoles and configure the log collector running on LinuxVM, using Putty.
-* **LinuxVM** is an Ubuntu 18.04 computer on which we install Docker to run the Cloud App Security Discovery log collector.
-* Office 365 and Cloud App Security are test tenants for the labs.
-
-
-
-### Portals URLs
-
-* Office 365:```https://portal.office.com```
-* Cloud App Security: ```https://portal.cloudappsecurity.com```
-* Security & Compliance Center: ```https://protection.office.com```
-* Windows Defender ATP: ```https://securitycenter.windows.com```
+1. [] The lab environment setup is now complete. In the next section you will start the lab.
 
 ===
 
@@ -1268,118 +1103,3 @@ Using PowerShell:
 5.   [] You are asked to define corporate IP's in MCAS. Subnets go from
     10.50.50.0/24 to 10.50.80.0/24
 
-===
-
-# Log Collector Troubleshooting
-[:arrow_left: Home](#labs) :clock10: 15 min
-
-In this task, you will review possible troubleshooting steps to identify issues in automatic logs upload from the log collector.
-There are several things to test at different locations: in the log collector, in MCAS, at the network level.
-
-## Useful commands
-
-* `cd` : *Used to navigate in the directories*
-    >**Examples:**
-    >
-    >`cd /var/adallom` : *to go to the specified directory*
-    >
-    >`cd /` : *to go to the root directory*
-    >
-    >`cd ..` : *to go to the parent directory*
-
-* `more` or `cat` : *Used to display the content of the logs*
-    > **Examples:**
-    >
-    >`more trace.log` : *to display the content of the trace.log file*
-
-* `tail` : *Used for outputting the last part of files*
-
-* `ll` : *Used to display the content of the directory as a list*. This command is an alias for `ls -l`
-
-* `clear` : *Used to clear the screen*
-
-* `tab key` : Used to perform autocompletion
-
-## Verify the log collector (container) status
-
-1. [] On **Client01**, open a session on PuTTY to **192.168.141.125** and use the credentials below.
-    In the PuTTY Configuration window, enter **192.168.141.125** and click **Open**.
-
-    ^IMAGE[Open Screenshot](\Media\dis-puttyconfig.png "Putty config")
-
-    Log in using the credentials below.
-    >|Username|Password|
-    >|---|---|
-    >|user01|Passw0rd1|
-    >
-    >:warning:The password doesn't appear in the command prompt, you can safely press enter to validate the credentials.
-
-2. [] Run the following commands:
-
-    ``` 
-    sudo -i
-    docker stats
-    ```
-    !IMAGE[Docker stats](\Media\dis-dockerstats.png "Docker stats")
-
-     > [!HINT] This command will show you the status of the log collector instance.
-
-3. [] Press `Ctrl-C` to end the command.
-
-4. [] Next, run the command below:
-
-    ``` 
-    docker logs --details LogCollector
-    ```
-    !IMAGE[Docker log](\Media\dis-dockerlog.png "Docker log")
-
-     > [!HINT] This command will show you the container logs to verify if it encountered errors when initiating.
-
-### Verify the log collector logs
-
-1. [] Type the following command:
-
-    ``` 
-    docker exec -it LogCollector bash
-    ```
-     > [!HINT] This command will execute the container's bash. You will then be able to execute commands *from inside* of the log collector.
-
-2. [] You can now explore the container filesystem and inspect the **/var/adallom** directory. This directory is where you will investigate most of the issues with the syslog or ftp logs being sent to the log collector.
-
-    ``` 
-    cd /var/adallom
-    ll
-    ```
-
-    !IMAGE[adallom folder](\Media\dis-dockerll.png "adallom folder")
-
-    Go to the following folders and review their log files using `more`:
-    * **/adallom/ftp/discovery**: this folder contains the data source folders where you send the log files for automated upload. This is also the default folder when logging into the collector with FTP credentials.
-    * **/adallom/syslog/discovery**: if you setup the log collector to receive syslog messages, this is where the flat file of aggregated messages will reside until it is uploaded.
-    * **/adallom/discoverylogsbackup**: this folder contains the last file that was sent to MCAS. This is useful for looking at the raw log in case there are parsing issues.
-
-3. [] To validate that logs are correctly received from the network appliance, you can also verify the **/var/log/pure-ftpd** directory and check the transfer log:
-
-    ``` 
-    tail transfer.log
-    ```
-
-    !IMAGE[FTP logs](\Media\dis-pureftp.png "FTP logs")
-
-4. [] Now, move to the **/var/log/adallom** directory.
-
-    !IMAGE[var log](\Media\dis-varlog.png "var log")
-
-    Go to the following folders and review their content and log files using `ll` and `more` or `tail`:
-    * **/var/log/adallom/columbus**: this folder is where you will find log files useful for troubleshooting issues with the collector sending files to Cloud App Security. In the **log-archive** folder you can find previous logs compressed as *.tar.gz* files that could be used to send to support for example.
-    * **/var/log/adallom/columbusInstaller**: this is where you will investigate issues with the log collector itself. You will find here logs related to the configuration and bootstrapping of the collector. For example, **trace.log** will show you the bootstrapping process:
-
-    !IMAGE[Bootstrapping log](\Media\dis-bootstrapping.png "bootstrapping log")
-
-## Verify the connectivity between the log collector and Cloud App Security
-
-An easy way to test the connectivity after configuring the log collector is to download a sample of your appliance logs from and use WinSCP to connect to the log collector to upload it and see if it gets uploaded to Cloud App Security, as you did in the previous exercise
-
-!IMAGE[Pending log](\Media\dis-pending.png "Log pending")
-
-> [!HINT] If the log stays in the source folder for too long, then you know you probably have a connection issue between the log collector and Cloud App Security and should go investigate the logs reviewed previously.
