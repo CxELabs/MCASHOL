@@ -374,10 +374,6 @@ In this section, we will explore how you can review the discovered apps and cate
 
     ^IMAGE[Open Screenshot](\Media\review11.png "Report")
 
-1. [] Select **PA Series Firewall**. This will generate a configuration script for **Palo Alto firewalls** with the apps domains or IPs to block.
-
-    ^IMAGE[Open Screenshot](\Media\review12.png "Report")
-
 ---
 
 # Generate Cloud Discovery executive reports
