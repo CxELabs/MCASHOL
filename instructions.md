@@ -83,7 +83,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 ---
 
 ## Enabling File Monitoring
-[:arrow_up: Top](#mcas-environment-preparation)
+[:arrow_up: Top](#lab-environment-configuration)
 
 1. [] On @lab.VirtualMachine(Client01).SelectLink log in with the password +++@lab.VirtualMachine(Client01).Password+++.
 
@@ -102,7 +102,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 ---
 
 ## Create a Developer Box Account
-[:arrow_up: Top](#mcas-environment-preparation)
+[:arrow_up: Top](#lab-environment-configuration)
 
 1. [] Next, open a new tab in your browser and navigate to ```https://developer.box.com``` and click on **Get Started**. 
 
@@ -130,7 +130,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 ---
 
 ## Connect Office 365 and Box to Cloud App Security 
-[:arrow_up: Top](#mcas-environment-preparation)
+[:arrow_up: Top](#lab-environment-configuration)
 
 To connect Cloud App Security to Office 365, you will have to use the Office 365 app connector. **App connectors** use the APIs of app providers to enable greater visibility and control by Microsoft Cloud App Security over the apps you connect to.  We will also use this method to show integration with the 3rd Party API for Box.
 
@@ -157,7 +157,7 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 ---
 
 ## Connecting Box to Cloud App Security
-[:arrow_up: Top](#mcas-environment-preparation)
+[:arrow_up: Top](#lab-environment-configuration)
 
 1. []  Click on the **+** button again, and this time click on **Box**.
 
@@ -200,7 +200,7 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 ---
 
 ## Enabling Azure Information Protection integration
-[:arrow_up: Top](#mcas-environment-preparation)
+[:arrow_up: Top](#lab-environment-configuration)
 
 To prepare the **Information Protection** lab, we have to enable the integration between Cloud App Security and Azure Information Protection as explained in the [Cloud App Security documentation](https://docs.microsoft.com/en-us/cloud-app-security/azip-integration). Enabling the integration between the two solutions is as easy as selecting one single checkBox.
 
