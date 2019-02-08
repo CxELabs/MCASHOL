@@ -85,7 +85,13 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 ## Enabling File Monitoring
 [:arrow_up: Top](#mcas-environment-preparation)
 
-1. [] Go to Cloud App Security portal at ```https://portal.cloudappsecurity.com``` and click on the **Gear** and then **Settings**.
+1. [] On @lab.VirtualMachine(Client01).SelectLink log in with the password +++@lab.VirtualMachine(Client01).Password+++.
+
+1. [] Go to Cloud App Security portal at ```https://portal.cloudappsecurity.com```, connect using the credentials below and click on the **Gear** and then **Settings**.
+
+    ```@lab.CloudCredential(17).Username```
+
+    ```@lab.CloudCredential(17).Password```
 
     !IMAGE[Settings](\Media\conf-settings.png "Settings")
 
@@ -221,10 +227,10 @@ To prepare the **Information Protection** lab, we have to enable the integration
 
 The different Cloud App Security capabilities covered in the labs are:
 
-* [Cloud apps Discovery](#cloud-app-security-discovery-lab)
+* [Cloud apps Discovery](#cloud-app-security-discovery)
 * [Conditional Access App Control with Office 365](#conditional-access-app-control-with-office-365)
 * [Automate alerts management with Microsoft Flow](#automate-alerts-management-with-microsoft-flow)
-* [Threats Protection](#threats-protection)
+* [Threat Protection](#threat-protection)
 * [Information Protection](#information-protection)
 
 > [!HINT] If you have questions or want to go further in your Cloud App Security journey, join our **[Tech community](https://techcommunity.microsoft.com/t5/Microsoft-Cloud-App-Security/bd-p/MicrosoftCloudAppSecurity)** !
@@ -457,9 +463,13 @@ The different steps of this lab are:
 
        ^IMAGE[Open Screenshot](\Media\cond-policy-3.png)
 
-    1. Under **Acess Controls**, click on **Session** and check off **Use Conditional Access App Control** 
+    1. Under **Access Controls**, click on **Session** and check off **Use Conditional Access App Control**.
 
-       ^IMAGE[Open Screenshot](\Media\cond-policy-4.png)
+    1. In the dropdown menu, select **Use custom policy**
+
+       > [!KNOWLEDGE] **Monitor only** or **Block downloads** help you to perform the related configuration in Cloud App Security for easy onboarding. For this lab, we want you to perform the **full** configuration in Azure AD and Cloud App Security.
+
+       !IMAGE[Open Screenshot](\Media\cond-policy-4.png)
 
     1. Click on **ON** in *Enable the policy* and click **Create**
 
@@ -481,19 +491,9 @@ The different steps of this lab are:
   
    ^IMAGE[Open Screenshot](\Media\appc-office-1.png)
 
-    > [!HINT] You will see that **Exchange Online** has now appeared as an application and can now be configured.
+    > [!HINT] You will see that **Exchange Online** appeared as an application and can now be used in policies.
 
-   ^IMAGE[Open Screenshot](\Media\appc-office-2.png)
-
-1. [] Click on **Continue setup** to enable session control and click on **Add**.
-
-   ^IMAGE[Open Screenshot](\Media\appc-office-3.png)
-
-   ^IMAGE[Open Screenshot](\Media\appc-office-4.png)
-  
-1. [] You are now notified that the application is under Session Control.
-
-   !IMAGE[Setup](\Media\appc-office-5.png)
+   !IMAGE[Open Screenshot](\Media\appc-office-5.png)
 
 1. [] On the left hand side click on **Control** and then **Policies**.
 
@@ -505,24 +505,23 @@ The different steps of this lab are:
 
     1. **Name**: ```Proxy - Block sensitive files download```
 
-    1. Under Session Control Type choose **Control filedownload (with DLP)**
+    1. Under Session Control Type choose **Control file download (with DLP)**
 
         ^IMAGE[Open Screenshot](\Media\appc-office-8.png)
 
     1. Add Activity Filters: **Device Tag** does not equal **Compliant, Domain joined**
 
-    1. **App** equals **Office 365 Exchange Online and Office 365 SharePoint Online**
+    1. **App** equals **Office 365 Exchange Online**
 
        !IMAGE[Session policy](\Media\appc-office-9.png)
 
-   1. Content inspection check **Enabled**
-   Include files that match a preset expression anc choose US: **PII: Social Security Number**
+    1. Content inspection check **Enabled**. Include files that match a preset expression anc choose US: **PII: Social Security Number**
 
        !IMAGE[Session policy](\Media\appc-office-10.png)
 
    1. Under Actions: go to **Block**
 
-   1. Click: **Customize block message**: ```This file containes SSN information and cannot be downloaded on non-coporate devices.```
+   1. Click: **Customize block message**: ```This file contains SSN information and cannot be downloaded on non-coporate devices.```
 
    1. Click: Verify that  **Create an alert for each matching event with the policy's severity** is checked. 
 
@@ -535,7 +534,7 @@ The different steps of this lab are:
 # Testing the Session Policy
 [:arrow_left: Home](#app-control-labs)
 
-Now is time to test our configuration. We will here simulate the userexperience while accessing company apps protected by Cloud App Security from an unmanaged device
+Now is time to test our configuration. We will here simulate the user experience while accessing company apps protected by Cloud App Security from an unmanaged device
 
 1. [] Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
@@ -557,11 +556,15 @@ Now is time to test our configuration. We will here simulate the userexperience 
 
 1. [] To test our policy, perform the following:
 
-    1. Create a new mail and attach the Word document named **Personal employees information.docx** and the Excel spreadsheet named **Workplace Innovation.xlsx** stored on **Client01** desktop. Send the mail to your user, ```@lab.CloudCredential(17).Username```
+    1. On @lab.VirtualMachine(Client01).SelectLink, **unzip** the file **"Demo files.zip"**
+
+    ^IMAGE[Open Screenshot](\Media\unzip.png)
+
+    1. Create a new mail and attach the Word document named **Personal employees information.docx** and the Excel spreadsheet named **Workplace Innovation.xlsx** from the folder you just extracted. Send the mail to your user, ```@lab.CloudCredential(17).Username```
 
        !IMAGE[Test](\Media\appc-office-14.png)
 
-    1. [] Wait until you receive your email in the webmail. 
+    1. [] Wait until you receive your email in the web mail.
 
     1. Once the message is received, click on the attached document **Personal employees information.docx**. This will open the file preview.
     As you can see, the user can access the document using the Office Online app.
@@ -826,10 +829,10 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
 ===
 
-# Threats Protection
+# Threat Protection
 [:arrow_left: Home](#labs)
 
-Cloud App Security provides several threats detection policies using machine learning and **user behavior analytics** to detect suspicious activities across your different applications.
+Cloud App Security provides several threat detection policies using machine learning and **user behavior analytics** to detect suspicious activities across your different applications.
 Those policies are enabled by default and after an initial learning period, Cloud App Security will start alerting you when suspicious actions like activity from anonymous IP addresses, infrequent country, suspicious IP addresses, impossible travel, ransomware activity, suspicious inBox forwarding configuration or unusual file download are detected.
 
 !IMAGE[Thret protection](\Media\tp-intro.png)
@@ -842,9 +845,9 @@ Those policies are enabled by default and after an initial learning period, Clou
 
 > **Portal**: ```https://portal.cloudappsecurity.com```
 >
-> **Username**: ```@lab.CloudCredential(17).Password```
+> **Username**: ```viewer@emslab.tech```
 >
-> **Password**: ```EventP@ssword```
+> **Password**: ```P@sswordEvent!1```
 
 ## Lab
 
@@ -862,7 +865,7 @@ Using the pre-populated environment, we will here simulate a security analyst in
 
 ## Anonymous access
 
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 This detection identifies that users were active from an IP address that has been identified as an anonymous proxy IP address. These proxies are used by people who want to hide their device’s IP address, and may be used for malicious intent. This detection uses a machine learning algorithm that reduces "false positives", such as mis-tagged IP addresses that are widely used by users in the organization.
 
@@ -897,7 +900,7 @@ As your authentication during the previous steps came from an anonymous IP addre
 ---
 
 ## Impossible travel
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 This detection identifies two user activities (is a single or multiple sessions) originating from geographically distant locations within a time period shorter than the time it would have taken the user to travel from the first location to the second, indicating that a different user is using the same credentials. This detection uses a machine learning algorithm that ignores obvious "false positives" contributing to the impossible travel condition, such as VPNs and locations regularly used by other users in the organization. The detection has an initial learning period of seven days during which it learns a new user’s activity pattern.
 
@@ -941,7 +944,7 @@ As the first and the second authentication came from distinct locations, Cloud A
 ---
 
 ## Activity from infrequent country
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 This detection considers past activity locations to determine new and infrequent locations. The anomaly detection engine stores information about previous locations used by users in the organization. An alert is triggered when an activity occurs from a location that wasn't recently or never visited by any user in the organization.
 
@@ -970,7 +973,7 @@ After an initial learning period, Cloud App Security will detect that this locat
 
 ## Malware detection
 
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 This detection identifies malicious files in your cloud storage, whether they're from your Microsoft apps or third-party apps. Microsoft Cloud App Security uses Microsoft's threat intelligence to recognize whether certain files are associated with known malware attacks and are potentially malicious. This built-in policy is disabled by default. Not every file is scanned, but heuristics are used to look for files that are potentially risky. After files are detected, you can then see a list of **Infected files**. Click on the malware file name in the file drawer to open a malware report that provides you with information about that type of malware the file is infected with.
 
@@ -1004,7 +1007,7 @@ This detection identifies malicious files in your cloud storage, whether they're
 
 ## Email exfiltration using suspicious inBox forwarding
 
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 This detection looks for suspicious email forwarding rules, for example, if a user created an inBox rule that forwards a copy of all emails to an external address.
 
@@ -1030,7 +1033,7 @@ As the rules redirects your user’s emails to a suspicious external address, Cl
 
 ## Ransomware activity
 
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 Cloud App Security extended its ransomware detection capabilities with anomaly detection to ensure a more comprehensive coverage against sophisticated Ransomware attacks. Using our security research expertise to identify behavioral patterns that reflect ransomware activity,Cloud App Security ensures holistic and robust protection. If Cloud App Security identifies, for example, a high rate of file uploads or file deletion activities it may represent an adverse encryption process. This data is collected in the logs received from connected APIs and is then combined with learned behavioral patterns and threat intelligence, for example, known ransomware extensions. For more information about how Cloud App Security detects ransomware, see Protecting your organization against ransomware.
 
@@ -1066,7 +1069,7 @@ As the rules redirects your user’s emails to a suspicious external address, Cl
 
 ## Suspicious application consent
 
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 Many third-party productivity apps that might be installed by business users in your organization request permission to access user information and data and sign in on behalf of the user in other cloud apps, such as Office 365, G Suite and Salesforce. 
 When users install these apps, they often click accept without closely reviewing the details in the prompt, including granting permissions to the app. This problem is compounded by the fact that IT may not have enough insight to weigh the security risk of an application against the productivity benefit that it provides.
@@ -1119,7 +1122,7 @@ Here is an example of such user consent:
 
 ## Create your own policies
 
-[:arrow_up: Top](#threats-protection)
+[:arrow_up: Top](#threat-protection)
 
 Now that we reviewed some of the default detection capabilities of Cloud App Security, you should start creating your own policies.
 Cloud App Security provides by default many has policies templates to start creating your custom policies.
@@ -1148,7 +1151,7 @@ Cloud App Security provides by default many has policies templates to start crea
 
 7. [] Explore other types of policies and review the proposed templates.
 
-> [!NOTE] **Congratulations**! You have completed the **Threats protection lab**.
+> [!NOTE] **Congratulations**! You have completed the **Threat protection lab**.
 
 ===
 
@@ -1265,7 +1268,7 @@ In this lab, we are going to configure a file policy to quarantine sensitive PDF
 
 We are now going to test our files policies by performing the following actions.
 
-1. [] On Client01, unzip the content of the **Demo files.zip**.
+1. [] On @lab.VirtualMachine(Client01).SelectLink, if not done yet, unzip the content of the **Demo files.zip**.
 
 1. [] Go to the **Box** files ```https://app.box.com/folder/0```
 
