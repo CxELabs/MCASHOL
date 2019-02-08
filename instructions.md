@@ -467,7 +467,7 @@ The different steps of this lab are:
 
     1. In the dropdown menu, select **Use custom policy**
 
-       > [!KNOWLEDGE] **Monitor only** or **Block downloads** help you to perform the related configuration in Cloud App Security for easy onboarding. For this lab, we want you to perform the **full** configuration in Azure AD and Cloud App Security.
+    > [!KNOWLEDGE] **Monitor only** or **Block downloads** helps you to perform the related configuration in Cloud App Security for easy onboarding. For this lab, we want you to perform the **full** configuration in Azure AD and Cloud App Security.
 
        !IMAGE[Open Screenshot](\Media\cond-policy-4.png)
 
