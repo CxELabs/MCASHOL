@@ -223,7 +223,7 @@ To prepare the **Information Protection** lab, we have to enable the integration
 
 ## Labs
 
-> [!ALERT] Before going to the different labs section, please be sure to complete the **[environment preparation](#mcas-environment-preparation)**.
+> [!ALERT] Before going to the different labs section, please be sure to complete the **[environment preparation](#lab-environment-configuration)**.
 
 The different Cloud App Security capabilities covered in the labs are:
 
