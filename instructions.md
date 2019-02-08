@@ -62,7 +62,7 @@ This lab is designed to be used as a supplement to Instructor Led Training and h
 
 ### [Lab Environment Configuration](#lab-environment-configuration)
 
-### [Lab: Microsoft Cloud App Security](#microsoft-cloud-app-security)
+### [Lab: Microsoft Cloud App Security](#labs)
 
 > [!ALERT] If you need to interrupt your lab, please ensure that you SAVE the session rather than END the lab.  If you end the lab, all configuration will be reset to initial state
 
