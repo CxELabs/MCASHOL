@@ -89,9 +89,9 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 
 1. [] Go to Cloud App Security portal at ```https://portal.cloudappsecurity.com```, connect using the credentials below and click on the **Gear** and then **Settings**.
 
-    ```@lab.CloudCredential(17).Username```
+    ```@lab.CloudCredential(139).Username```
 
-    ```@lab.CloudCredential(17).Password```
+    ```@lab.CloudCredential(139).Password```
 
     !IMAGE[Settings](\Media\conf-settings.png "Settings")
 
@@ -113,7 +113,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 	|||
 	|-----|-----|
 	|**Full Name**|```MOD Admin```|
-	|**Email Address**|```@lab.CloudCredential(17).UserName```|
+	|**Email Address**|```@lab.CloudCredential(139).UserName```|
 
 	^IMAGE[Open Screenshot](\Media\box-signup.png)
 
@@ -123,7 +123,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 
 	^IMAGE[Open Screenshot](\Media\box-verify.png)
 
-1. [] In the new window that opens, enter the password to use with **Box**. We'll use ```@lab.CloudCredential(17).password``` in **each of the password boxes**. Click the **Update** button to save your password.
+1. [] In the new window that opens, enter the password to use with **Box**. We'll use ```@lab.CloudCredential(139).password``` in **each of the password boxes**. Click the **Update** button to save your password.
 
 1. [] You can now close the **Box** and **Office 365 mailbox** tabs.
 
@@ -173,9 +173,9 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 1. [] Log into Box using the credentials below:
 
-	```@lab.CloudCredential(17).Username```
+	```@lab.CloudCredential(139).Username```
 
-	```@lab.CloudCredential(17).Password```
+	```@lab.CloudCredential(139).Password```
 
 1. [] Click on the **Authorize** button.
 
@@ -477,9 +477,9 @@ The different steps of this lab are:
 
 1. [] Connect using :
 
-    >```@lab.CloudCredential(17).Username```
+    >```@lab.CloudCredential(139).Username```
     >
-    >```@lab.CloudCredential(17).Password```
+    >```@lab.CloudCredential(139).Password```
 
     > [!HINT] This is done to force the use of conditional access. Once a session has been redirected to Cloud App Security, you will be able to configure the application for App Control in Cloud App Security.
 
@@ -534,9 +534,9 @@ Now is time to test our configuration. We will here simulate the user experience
 
 1. [] Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
-   >```@lab.CloudCredential(17).Username```
+   >```@lab.CloudCredential(139).Username```
    >
-   >```@lab.CloudCredential(17).Password```
+   >```@lab.CloudCredential(139).Password```
 
 1. You should receive the following message, as you are redirected through Cloud App Security before accessing the application.
   
@@ -556,7 +556,7 @@ Now is time to test our configuration. We will here simulate the user experience
 
     ^IMAGE[Open Screenshot](\Media\unzip.png)
 
-    1. Create a new mail and attach the Word document named **Personal employees information.docx** and the Excel spreadsheet named **Workplace Innovation.xlsx** from the folder you just extracted. Send the mail to your user, ```@lab.CloudCredential(17).Username```
+    1. Create a new mail and attach the Word document named **Personal employees information.docx** and the Excel spreadsheet named **Workplace Innovation.xlsx** from the folder you just extracted. Send the mail to your user, ```@lab.CloudCredential(139).Username```
 
        !IMAGE[Test](\Media\appc-office-14.png)
 
@@ -654,9 +654,9 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
 1. [] Open a **new tab** in your browser and go to ```https://teams.microsoft.com```. If needed, connect using:
 
-    >```@lab.CloudCredential(17).Username```
+    >```@lab.CloudCredential(139).Username```
     >
-    >```@lab.CloudCredential(17).Password```
+    >```@lab.CloudCredential(139).Password```
 
 1. [] Click on the **Teams icon** and click on the **Create team** button.
 
@@ -786,9 +786,9 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
 1. [] Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
-   >```@lab.CloudCredential(17).Username```
+   >```@lab.CloudCredential(139).Username```
    >
-   >```@lab.CloudCredential(17).Password```
+   >```@lab.CloudCredential(139).Password```
 
 1. You should receive the following message, as you are redirected through Cloud App Security before accessing the application.
   
