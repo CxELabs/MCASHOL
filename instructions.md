@@ -73,7 +73,7 @@ This lab is designed to be used as a supplement to Instructor Led Training and h
 
 There are a few prerequisites that need to be set up to complete all the sections in this lab. This Exercise will walk you through the items below.
 
-To be able to complete the different parts of the Cloud App Security labs, the following configuration steps are required.
+To be able to complete the different parts of the Cloud App Security labs, the following configuration steps are required. 
 
 * [Enabling File Monitoring](#enabling-file-monitoring)
 * [Create a Developer Box Account](#create-a-developer-box-account)
