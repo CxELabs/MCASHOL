@@ -122,15 +122,15 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 1.   Click on the **+** button again, and this time click on **Box**.
 
-	![2](Media/box-connect.png)
+	![2](Media/box-connect.png "Pic"))
 
 1.  In the Instance name box, type ```Box API Demo```, and click **Connect Box**.
 
-	![Open Screenshot](Media/apiBox3.jpg)
+	![Open Screenshot](Media/apiBox3.JPG "Pic")
 
 1.  In the Connect Box dialog, click **follow this link**.
 
-	![4](Media/box-follow.png)
+	![4](Media/box-follow.png "Pic")
 
 1.  Log into Box using the credentials below:
 
@@ -142,21 +142,21 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 1.  Click on **Grant access to Box**
 
-	![Open Screenshot](Media/box-grant.png)
+	![Open Screenshot](Media/box-grant.png "Pic")
 
 1.  Close the Connect Box dialog and click on **Box API Demo** to expand.
 
 1.  Click on the **Test now** button.
 
-	![Open Screenshot](Media/apiBox7.jpg)
+	![Open Screenshot](Media/apiBox7.JPG "Pic")
 
 	> :information_source: Once the connection is successful - it will say **Connected.** 
 	>
-	> ![8](Media/apiBox8.jpg)
+	> ![8](Media/apiBox8.JPG "Pic")
 
 1.   Close the dialog and you should be able to see **Box API Demo** as a **Connected** app in the list. 
 
-	![Open Screenshot](Media/apiBox9.png)
+	![Open Screenshot](Media/apiBox9.png "Pic")
 
 ---
 
@@ -204,7 +204,7 @@ On average, more than 1,100 cloud applications are used by enterprises today, of
 **Discovery** identifies current cloud apps, provides risk assessments and ongoing analytics and lifecycle management capabilities to control the use.
 
 
-![Discovery](Media/discovery3.jpg)
+![Discovery](Media/discovery3.JPG "Pic")
 
 
 To provide this visibility on Shadow IT and cloud apps usage, Cloud App Security ingest and analyze network logs from proxy, firewall but also from **Windows 10** clients within or **ouside** the corporate network, using the native integration with **Windows Defender ATP**.
@@ -896,7 +896,7 @@ As the first and the second authentication came from distinct locations, Cloud A
 	> 
     > You can set the sensitivity slider to determine the level of anomalous behavior needed before an alert is triggered. For example, if you set it to low, it will suppress Impossible Travel alerts from a user’s common locations, and if you set it to high, it will surface such alerts.
 	> 
-	>  ![Impossible Travel Sensitivity Bar](Media/updatedimpossibletravel.jpg)  
+	>  ![Impossible Travel Sensitivity Bar](Media/updatedimpossibletravel.JPG "Pic")  
 
 ---
 
@@ -923,7 +923,7 @@ After an initial learning period, Cloud App Security will detect that this locat
 
 	> :memo: Possible resolution options are available on the top bar for single click remediation. 
 
-	![Infrequent country alert](Media/infrequentcountry1.jpg)
+	![Infrequent country alert](Media/infrequentcountry1.JPG "Pic")
 
 
 ---
@@ -1118,7 +1118,7 @@ Cloud App Security provides by default many has policies templates to start crea
 In a perfect world, all your employees understand the importance of information protection and work within your policies. But in a real world, it's probable that a partner who works with accounting uploads a document to your Box repository with the wrong permissions, and a week later you realize that your enterprise's confidential information was leaked to your competition.
 Microsoft Cloud App Security helps you prevent this kind of disaster before it happens.
 
-![IP](Media/IPCAS.jpg)
+![IP](Media/IPCAS.JPG "Pic")
 
 ===
 ## Information Protection Lab
@@ -1184,7 +1184,7 @@ In this lab, we are going to configure a file policy to apply an **Azure Informa
 
     > :warning: If you are not able to select Azure Information Protection templates, verify that you configured the integration in the prerequisites section or that you waited the 1h for the classifications to sync. In addition log out of the Cloud App Security Portal and log back in and see and if you're able to apply the label. 
 
-  ![gov](Media/Boxgovssn.jpg)
+  ![gov](Media/Boxgovssn.JPG "Pic")
 
 
 1.  Click **Create** to finish the policy creation.
@@ -1216,7 +1216,7 @@ In this lab, we are going to configure a file policy to quarantine sensitive PDF
 
 1.  In Governance actions of the policy, select **Put in admin quarantine** for Box and click on the **Create** button.
 
-    ![Unmask](Media/Boxgovadmin.jpg)
+    ![Unmask](Media/Boxgovadmin.JPG "Pic")
 
 ---
 
@@ -1257,7 +1257,7 @@ We are now going to test our files policies by performing the following actions.
 
 1.  You can also view the related governance actions, like applying the Azure Information classification or moving the file to the quarantine folder, at the file level or in the **Governance log**.
 
-    ![Governance log](Media/Boxgovlog.jpg)
+    ![Governance log](Media/Boxgovlog.JPG "Pic")
 
 1.  As we configured **Alerts** in our lab, you can also review the related alerts in the **Alerts page**.
 
