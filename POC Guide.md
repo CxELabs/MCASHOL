@@ -123,7 +123,7 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 1. Click on the **+** button again, and this time click on **Box**.
 
-  ![2](Media/box-connect.png "Pic"))
+    ![2](Media/box-connect.png "Pic"))
 
 1. In the Instance name box, type ```Box API Demo```, and click **Connect Box**.
 
