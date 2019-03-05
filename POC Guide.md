@@ -150,13 +150,13 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 	![Open Screenshot](Media/apiBox7.jpg)
 
-	> :information_source: Once the connection is succesful - it will say **Connected.** 
+	> :information_source: Once the connection is successful - it will say **Connected.** 
 	>
 	> ![8](Media/apiBox8.jpg)
 
 1.   Close the dialog and you should be able to see **Box API Demo** as a **Connected** app in the list. 
 
-	![Open Screenshot](Media/apiBox9.jpg) 
+	![Open Screenshot](Media/apiBox9.jpg)
 
 ---
 
