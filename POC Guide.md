@@ -126,7 +126,7 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 1.  In the Instance name box, type ```Box API Demo```, and click **Connect Box**.
 
-	![Open Screenshot](Media/apiBox3.JPG)
+	![Open Screenshot](Media/apiBox3.jpg)
 
 1.  In the Connect Box dialog, click **follow this link**.
 
@@ -148,15 +148,15 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 1.  Click on the **Test now** button.
 
-	![Open Screenshot](Media/apiBox7.JPG)
+	![Open Screenshot](Media/apiBox7.jpg)
 
 	> :information_source: Once the connection is succesful - it will say **Connected.** 
 	>
-	> ![8](Media/apiBox8.JPG)
+	> ![8](Media/apiBox8.jpg)
 
 1.   Close the dialog and you should be able to see **Box API Demo** as a **Connected** app in the list. 
 
-	![Open Screenshot](Media/apiBox9.JPG) 
+	![Open Screenshot](Media/apiBox9.jpg) 
 
 ---
 
@@ -194,7 +194,7 @@ The different Cloud App Security capabilities covered in the labs are:
 * [Threat Protection](#threat-protection)
 * [Information Protection](#information-protection)
 
-> [!HINT] If you have questions or want to go further in your Cloud App Security journey, join our **[Tech community](https://techcommunity.microsoft.com/t5/Microsoft-Cloud-App-Security/bd-p/MicrosoftCloudAppSecurity)** !
+> :information_source: If you have questions or want to go further in your Cloud App Security journey, join our **[Tech community](https://techcommunity.microsoft.com/t5/Microsoft-Cloud-App-Security/bd-p/MicrosoftCloudAppSecurity)** !
 
 ===
 
@@ -204,7 +204,7 @@ On average, more than 1,100 cloud applications are used by enterprises today, of
 **Discovery** identifies current cloud apps, provides risk assessments and ongoing analytics and lifecycle management capabilities to control the use.
 
 
-![Discovery](Media/discovery3.JPG)
+![Discovery](Media/discovery3.jpg)
 
 
 To provide this visibility on Shadow IT and cloud apps usage, Cloud App Security ingest and analyze network logs from proxy, firewall but also from **Windows 10** clients within or **ouside** the corporate network, using the native integration with **Windows Defender ATP**.
@@ -442,13 +442,13 @@ The different steps of this lab are:
     >
     >**mcasL@b!2000**
 
-    > [!HINT] This is done to force the use of conditional access. Once a session has been redirected to Cloud App Security, you will be able to configure the application for App Control in Cloud App Security.
+    > :information_source: This is done to force the use of conditional access. Once a session has been redirected to Cloud App Security, you will be able to configure the application for App Control in Cloud App Security.
 
 1.  Go back to Cloud App Security ```https://portal.cloudappsecurity.com```, click on the **Gear** icon and click on **Conditional Access App Control**.
   
    ![Open Screenshot](Media/appc-office-1.png)
 
-    > [!HINT] You will see that **Exchange Online** appeared as an application and can now be used in policies.
+    > :information_source: You will see that **Exchange Online** appeared as an application and can now be used in policies.
 
    ![Open Screenshot](Media/appc-office-5.png)
 
@@ -507,7 +507,7 @@ Now is time to test our configuration. We will here simulate the user experience
 
 1.  You are now directed to Exchange Online and your session is now passing **through** Cloud App Security.
 
-    > [!HINT] By taking a look at the **URL**, you can verify that your session is actually being redirected to **Cloud App Security**.
+    > :information_source: By taking a look at the **URL**, you can verify that your session is actually being redirected to **Cloud App Security**.
 
    ![Session](Media/appc-office-13.png)
 
@@ -715,7 +715,7 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
     ![Open Screenshot](Media/flow14.png)
 
-    > [!HINT] For this exercise, we are posting basic information in Teams but you could use the Azure AD connector to get more information about the user and then configuring it to use MFA for example.
+    > :information_source: For this exercise, we are posting basic information in Teams but you could use the Azure AD connector to get more information about the user and then configuring it to use MFA for example.
 
 1.  Click on the **Save** button.
 
@@ -798,7 +798,7 @@ Those policies are enabled by default and after an initial learning period, Clou
 
 > :warning: It can take **up to 24 hours** for the auditing in Office 365 to be configured, meaning that Cloud App Security will not receive the activities events. As many alerts relies on activities events to work, we will be **using a pre-populated tenant** for this portion of the lab so we can see alerts and have the ability to investigate them.
 
-> [!HINT] LOG OUT OF YOUR CURRENT CLOUD APP SECURITY TENANT AND LOG BACK IN USING THE CREDENTIALS BELOW.
+> :information_source: LOG OUT OF YOUR CURRENT CLOUD APP SECURITY TENANT AND LOG BACK IN USING THE CREDENTIALS BELOW.
 
 > **Portal**: ```https://portal.cloudappsecurity.com```
 >
@@ -896,7 +896,7 @@ As the first and the second authentication came from distinct locations, Cloud A
 	> 
     > You can set the sensitivity slider to determine the level of anomalous behavior needed before an alert is triggered. For example, if you set it to low, it will suppress Impossible Travel alerts from a user’s common locations, and if you set it to high, it will surface such alerts.
 	> 
-	>  ![Impossible Travel Sensitivity Bar](Media/updatedimpossibletravel.JPG)  
+	>  ![Impossible Travel Sensitivity Bar](Media/updatedimpossibletravel.jpg)  
 
 ---
 
@@ -923,7 +923,7 @@ After an initial learning period, Cloud App Security will detect that this locat
 
 	> :memo: Possible resolution options are available on the top bar for single click remediation. 
 
-	![Infrequent country alert](Media/infrequentcountry1.JPG)
+	![Infrequent country alert](Media/infrequentcountry1.jpg)
 
 
 ---
@@ -1118,7 +1118,7 @@ Cloud App Security provides by default many has policies templates to start crea
 In a perfect world, all your employees understand the importance of information protection and work within your policies. But in a real world, it's probable that a partner who works with accounting uploads a document to your Box repository with the wrong permissions, and a week later you realize that your enterprise's confidential information was leaked to your competition.
 Microsoft Cloud App Security helps you prevent this kind of disaster before it happens.
 
-![IP](Media/IPCAS.JPG)
+![IP](Media/IPCAS.jpg)
 
 ===
 ## Information Protection Lab
@@ -1170,7 +1170,7 @@ In this lab, we are going to configure a file policy to apply an **Azure Informa
 
 1. Search and select the **all** the information types matching ```SSN``` and click on **Done**.
 
-    > [!HINT] Be sure to select the checkboxes as clicking on the name do not select the information type.
+    > :information_source: Be sure to select the checkboxes as clicking on the name do not select the information type.
 
     ![SSN type](Media/info-ssn.png "SSN type")
 
@@ -1184,7 +1184,7 @@ In this lab, we are going to configure a file policy to apply an **Azure Informa
 
     > :warning: If you are not able to select Azure Information Protection templates, verify that you configured the integration in the prerequisites section or that you waited the 1h for the classifications to sync. In addition log out of the Cloud App Security Portal and log back in and see and if you're able to apply the label. 
 
-  ![gov](Media/Boxgovssn.JPG)
+  ![gov](Media/Boxgovssn.jpg)
 
 
 1.  Click **Create** to finish the policy creation.
@@ -1216,7 +1216,7 @@ In this lab, we are going to configure a file policy to quarantine sensitive PDF
 
 1.  In Governance actions of the policy, select **Put in admin quarantine** for Box and click on the **Create** button.
 
-    ![Unmask](Media/Boxgovadmin.JPG)
+    ![Unmask](Media/Boxgovadmin.jpg)
 
 ---
 
@@ -1241,7 +1241,7 @@ We are now going to test our files policies by performing the following actions.
 
 1.  Cloud App Security will now scan those documents and search for matches to your created policies.
 
-    > [!HINT] The scan can take **several minutes** before completion.
+    > :information_source: The scan can take **several minutes** before completion.
 
 1.  To monitor the evolution of the scan, go back to Cloud App Security, select **Investigate** and open the **Files** page.
 
