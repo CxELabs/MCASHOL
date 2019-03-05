@@ -1,4 +1,4 @@
-# Implementing Microsoft Cloud App Security
+# Implementing Microsoft Cloud App Security - POC/Lab guide
 
 ## Introduction
 
@@ -10,20 +10,15 @@ The diagram below describe typical use cases for CASB's.
 
 ![MCAS intro](Media/mcasintro-1.png "MCAS intro")
 
-
 This lab will guide you through some of Microsoft Cloud App Security (MCAS) capabilities and top use cases.
 
 ===
 
 # Lab
 
-This lab is designed to be used as a supplement to Instructor Led Training and has several sections that you will go through over the next hour. Please click the links below to first prepare your environment and then go through different tasks to explore Microsoft Cloud App Security capabilities.  
+This lab is designed to work in any Cloud App Security environment. We recommend creating a demo/trial tenant with Office 365 and Cloud App Security enabled. Cloud App Security requires EM-S (Enterprise Mobility + Security) E5 licenses. To get trial licenses, go to this link :https://www.microsoft.com/en-us/cloud-platform/enterprise-mobility-security-trial
 
-### [Lab Environment Configuration](#lab-environment-configuration)
-
-### [Lab: Microsoft Cloud App Security](#labs)
-
-> :warning: If you need to interrupt your lab, please ensure that you SAVE the session rather than END the lab.  If you end the lab, all configuration will be reset to initial state
+ Please click the links below to first prepare your environment and then go through different tasks to explore Microsoft Cloud App Security capabilities.  
 
 ===
 
@@ -34,6 +29,7 @@ There are a few prerequisites that need to be set up to complete all the section
 
 To be able to complete the different parts of the Cloud App Security labs, the following configuration steps are required. 
 
+* [Creating your test user](#creating-your-test-user)
 * [Enabling File Monitoring](#enabling-file-monitoring)
 * [Create a Developer Box Account](#create-a-developer-box-account)
 * [Connect Office 365 and Box to Cloud App Security](#connect-office-365-and-box-to-cloud-app-security)
@@ -41,16 +37,22 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 
 ---
 
+## Creating your test user
+[:arrow_up: Top](#lab-environment-configuration)
+
+In this lab, we assume you will use a user called **Adele Vance**. Her username will be **adelev@mcaslab.com** and her password **mcasL@b!2000**.
+Please create this account in your environment and assign her an Office 365 E3 and an EM-S E5 licenses.
+
+---
+
 ## Enabling File Monitoring
 [:arrow_up: Top](#lab-environment-configuration)
 
-1.  On @lab.VirtualMachine(Client01).SelectLink log in with the password +++@lab.VirtualMachine(Client01).Password+++.
-
 1.  Go to Cloud App Security portal at ```https://portal.cloudappsecurity.com```, connect using the credentials below and click on the **Gear** and then **Settings**.
 
-    ```@lab.CloudCredential(139).Username```
+    **adelev@mcaslab.com**
 
-    ```@lab.CloudCredential(139).Password```
+    **mcasL@b!2000**
 
     ![Settings](Media/conf-settings.png "Settings")
 
@@ -72,7 +74,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 	|||
 	|-----|-----|
 	|**Full Name**|```MOD Admin```|
-	|**Email Address**|```@lab.CloudCredential(139).UserName```|
+	|**Email Address**|**adelev@mcaslab.com**|
 
 	![Open Screenshot](Media/box-signup.png)
 
@@ -82,7 +84,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 
 	![Open Screenshot](Media/box-verify.png)
 
-1.  In the new window that opens, enter the password to use with **Box**. We'll use ```@lab.CloudCredential(139).password``` in **each of the password boxes**. Click the **Update** button to save your password.
+1.  In the new window that opens, enter the password to use with **Box**. We'll use **mcasL@b!2000** in **each of the password boxes**. Click the **Update** button to save your password.
 
 1.  You can now close the **Box** and **Office 365 mailbox** tabs.
 
@@ -111,7 +113,7 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
     ![Open Screenshot](Media/conf-testoffice.png "Test connectivity")
 
-	> [!NOTE] If the connection is taking more than 1 minute - close out of the portal and log back in to check if it's been connected. 
+	> :memo: If the connection is taking more than 1 minute - close out of the portal and log back in to check if it's been connected. 
 
 ---
 
@@ -132,9 +134,9 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 1.  Log into Box using the credentials below:
 
-	```@lab.CloudCredential(139).Username```
+	**adelev@mcaslab.com**
 
-	```@lab.CloudCredential(139).Password```
+	**mcasL@b!2000**
 
 1.  Click on the **Authorize** button.
 
@@ -170,7 +172,7 @@ To prepare the **Information Protection** lab, we have to enable the integration
 2.  Go down in the settings to the **Azure Information Protection** section and check the **Automatically scan new files** checkBox and click on the "**Save** button.
     ![Enable AIP](Media/conf-aip.png "Enable AIP")
 
->[!NOTE]: It can take up to **1h** for Cloud App Security to sync the Azure Information classifications.
+>:memo:: It can take up to **1h** for Cloud App Security to sync the Azure Information classifications.
 
 ---
 
@@ -215,7 +217,7 @@ Once the logs have been analyzed, Cloud App Security provides the visibility on 
 ![Discovery intro](Media/dis-intro2.png "Discovery intro")
 
 
-> [!NOTE] In this lab, we will simulate the upload of network logs from a SQUID proxy to analyze the apps used withing your company. We will not test the Windows Defender ATP integration at it can take up to **2h** before the logs are parsed and the results are visible in the console.
+> :memo: In this lab, we will simulate the upload of network logs from a SQUID proxy to analyze the apps used withing your company. We will not test the Windows Defender ATP integration at it can take up to **2h** before the logs are parsed and the results are visible in the console.
 
 ===
 # Cloud Discovery Snapshot Report
@@ -267,7 +269,7 @@ To create snapshot reports:
 
 1.  Once your report is marked as ready, click on the text **Ready**. You will be redirected to your snapshot report where you can start exploring the discovered apps, users, IPs.
  
-    > [!NOTE] If after a couple of minutes the status hasn't change, **refresh** the page in your browser.
+    > :memo: If after a couple of minutes the status hasn't change, **refresh** the page in your browser.
 
     ![Open Screenshot](Media/dis-reportready2.png "Report ready")
 
@@ -351,7 +353,7 @@ This report contains information about the discovered apps, their risks and usag
 
    ![Review](Media/review15.png "Report")
 
-> [!NOTE] **Congratulations**! You have completed the **Cloud Discovery lab**.
+> :memo: **Congratulations**! You have completed the **Cloud Discovery lab**.
 
 ===
 
@@ -365,9 +367,9 @@ Azure AD conditional access allows you to enforce access controls on your organi
 
 Conditional Access App Control enables user app access and sessions to be **monitored and controlled in real time** based on access and session policies.
 
-![AAD portal](Media/caac1.jpg)
+![AAD portal](Media/caac-overview.png)
 
-> [!NOTE] **App Control Access and Session policies give you the capability to the following:**
+> :memo: **App Control Access and Session policies give you the capability to the following:**
 * **Block on download**: You can block the download of sensitive documents. For example, on unmanaged devices.
 * **Protect on download**: Instead of blocking the download of sensitive documents, you can require documents to be protected via encryption on download. This ensures that the document is protected, and user access is authenticated, if the data is downloaded to an untrusted device.
 * **Monitor low-trust user sessions**: Risky users are monitored when they sign into apps and their actions are logged from within the session. You can investigate and analyze user behavior to understand where, and under what conditions, session policies should be applied in the future.
@@ -436,9 +438,9 @@ The different steps of this lab are:
 
 1.  Connect using :
 
-    >```@lab.CloudCredential(139).Username```
+    >**adelev@mcaslab.com**
     >
-    >```@lab.CloudCredential(139).Password```
+    >**mcasL@b!2000**
 
     > [!HINT] This is done to force the use of conditional access. Once a session has been redirected to Cloud App Security, you will be able to configure the application for App Control in Cloud App Security.
 
@@ -493,9 +495,9 @@ Now is time to test our configuration. We will here simulate the user experience
 
 1.  Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
-   >```@lab.CloudCredential(139).Username```
+   >**adelev@mcaslab.com**
    >
-   >```@lab.CloudCredential(139).Password```
+   >**mcasL@b!2000**
 
 1. You should receive the following message, as you are redirected through Cloud App Security before accessing the application.
   
@@ -511,11 +513,11 @@ Now is time to test our configuration. We will here simulate the user experience
 
 1.  To test our policy, perform the following:
 
-    1. On @lab.VirtualMachine(Client01).SelectLink, **unzip** the file **"Demo files.zip"**
+    1. On your computer, **unzip** the file **"Demo files.zip"**
 
     ![Open Screenshot](Media/unzip.png)
 
-    1. Create a new mail and attach the Word document named **Personal employees information.docx** and the Excel spreadsheet named **Workplace Innovation.xlsx** from the folder you just extracted. Send the mail to your user, ```@lab.CloudCredential(139).Username```
+    1. Create a new mail and attach the Word document named **Personal employees information.docx** and the Excel spreadsheet named **Workplace Innovation.xlsx** from the folder you just extracted. Send the mail to your user, **adelev@mcaslab.com**
 
        ![Test](Media/appc-office-14.png)
 
@@ -579,7 +581,7 @@ Now that we validated our configuration, let's go back to the admin view.
 
         ![Menu](Media/appc-admin-6.png)
 
-> [!NOTE] **Congratulations**! You have completed the **Conditional access App Control lab**.
+> :memo: **Congratulations**! You have completed the **Conditional access App Control lab**.
 
 ===
 
@@ -613,9 +615,9 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
 1.  Open a **new tab** in your browser and go to ```https://teams.microsoft.com```. If needed, connect using:
 
-    >```@lab.CloudCredential(139).Username```
+    >**adelev@mcaslab.com**
     >
-    >```@lab.CloudCredential(139).Password```
+    >**mcasL@b!2000**
 
 1.  Click on the **Teams icon** and click on the **Create team** button.
 
@@ -745,9 +747,9 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
 1.  Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
-   >```@lab.CloudCredential(139).Username```
+   >**adelev@mcaslab.com**
    >
-   >```@lab.CloudCredential(139).Password```
+   >**mcasL@b!2000**
 
 1. You should receive the following message, as you are redirected through Cloud App Security before accessing the application.
   
@@ -780,7 +782,7 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
     ![Open Screenshot](Media/flowalert2.png)
 
-> [!NOTE] **Congratulations**! You have completed the **Automate alerts management with Microsoft Flow lab** where we discovered the power of the integration between Cloud App Security and Microsoft Flow.
+> :memo: **Congratulations**! You have completed the **Automate alerts management with Microsoft Flow lab** where we discovered the power of the integration between Cloud App Security and Microsoft Flow.
 
 ===
 
@@ -919,7 +921,7 @@ After an initial learning period, Cloud App Security will detect that this locat
 
    ![Infrequent country alert](Media/td-infrequentcountryalert-details.png "Infrequent country alert details")
 
-	> [!NOTE] Possible resolution options are available on the top bar for single click remediation. 
+	> :memo: Possible resolution options are available on the top bar for single click remediation. 
 
 	![Infrequent country alert](Media/infrequentcountry1.JPG)
 
@@ -1106,7 +1108,7 @@ Cloud App Security provides by default many has policies templates to start crea
 
 7.  Explore other types of policies and review the proposed templates.
 
-> [!NOTE] **Congratulations**! You have completed the **Threat protection lab**.
+> :memo: **Congratulations**! You have completed the **Threat protection lab**.
 
 ===
 
@@ -1223,7 +1225,7 @@ In this lab, we are going to configure a file policy to quarantine sensitive PDF
 
 We are now going to test our files policies by performing the following actions.
 
-1.  On @lab.VirtualMachine(Client01).SelectLink, if not done yet, unzip the content of the **Demo files.zip**.
+1.  On your computer, if not done yet, unzip the content of the **Demo files.zip**.
 
 1.  Go to the **Box** files ```https://app.box.com/folder/0```
 
@@ -1275,7 +1277,7 @@ We are now going to test our files policies by performing the following actions.
 
     ![Matches](Media/info=matches.png)
 
-> [!NOTE] **Congratulations**! You have completed the **Information Protection lab**.
+> :memo: **Congratulations**! You have completed the **Information Protection lab**.
 
 ===
 
