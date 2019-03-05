@@ -15,47 +15,6 @@ This lab will guide you through some of Microsoft Cloud App Security (MCAS) capa
 
 ===
 
-# Tips and Tricks
-[:arrow_left: Home](#introduction)
-
-There are a few extras throughout this lab that are designed to make your lab experience a smooth and simple process.  Below are some icons you should watch out for that will save you time during each task.
-
-## Interactive Elements
-
-- Each task contains a series of steps required for successful completion of the lab.  To track your progress throughout the lab, check the Box to the left of the numbered series.  
-
-	![6mfi1ekm.jpg](Media/6mfi1ekm.jpg)
-
-- When you see an instruction for switching computers, click on the **blue link** in the text to have that VM loaded automatically.
-
-	![12i85vgl.jpg](Media/12i85vgl.jpg)
-
-- Throughout the lab, you will see text with a letter **T** in a square to the left.  This indicates that you can **click on the text** and it will **type it for you** in the VM.  **This will save you lots of time**.
-
-	![cnyu1tdi.jpg](Media/cnyu1tdi.jpg)
-
-- The last interactive element you will see throughout the lab is the **Open Screenshot** text below many steps.  To reduce clutter, most screenshots have been configured to launch in a popup window.  The only ones left visible are ones that could cause issues if they are missed or if there are multiple elements that are easier to understand with visual representation.
-
-	![n4cqn070.jpg](Media/n4cqn070.jpg)
-
-## Additional Information
-
-There are also Knowledge Items, Notes, and Hints throughout the lab.
-
-- Knowledge Items are used to provide additional information about a topic related to the task or step.  These are often collapsed to reduce the amount of space they use, but it is recommended that you review these items if you want more information on the subject.
-
-	![8g9nif1j.jpg](Media/8g9nif1j.jpg)
-
-- Notes are steps that do not require action or modification of any elements.  This includes general observations and reviewing the results of previous steps.
-
-	![kxrbzsr2.jpg](Media/kxrbzsr2.jpg)
-
-- Hints are recommendations or observations that help with the completion of a step.
-
-	![w11x99oo.jpg](Media/w11x99oo.jpg)
-
-===
-
 # Lab
 
 This lab is designed to be used as a supplement to Instructor Led Training and has several sections that you will go through over the next hour. Please click the links below to first prepare your environment and then go through different tasks to explore Microsoft Cloud App Security capabilities.  
@@ -64,7 +23,7 @@ This lab is designed to be used as a supplement to Instructor Led Training and h
 
 ### [Lab: Microsoft Cloud App Security](#labs)
 
-> [!ALERT] If you need to interrupt your lab, please ensure that you SAVE the session rather than END the lab.  If you end the lab, all configuration will be reset to initial state
+> :warning: If you need to interrupt your lab, please ensure that you SAVE the session rather than END the lab.  If you end the lab, all configuration will be reset to initial state
 
 ===
 
@@ -85,9 +44,9 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 ## Enabling File Monitoring
 [:arrow_up: Top](#lab-environment-configuration)
 
-1. [] On @lab.VirtualMachine(Client01).SelectLink log in with the password +++@lab.VirtualMachine(Client01).Password+++.
+1.  On @lab.VirtualMachine(Client01).SelectLink log in with the password +++@lab.VirtualMachine(Client01).Password+++.
 
-1. [] Go to Cloud App Security portal at ```https://portal.cloudappsecurity.com```, connect using the credentials below and click on the **Gear** and then **Settings**.
+1.  Go to Cloud App Security portal at ```https://portal.cloudappsecurity.com```, connect using the credentials below and click on the **Gear** and then **Settings**.
 
     ```@lab.CloudCredential(139).Username```
 
@@ -95,7 +54,7 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 
     ![Settings](Media/conf-settings.png "Settings")
 
-1. [] Under the **Information Protection** section click on **Files** and check the **Enable file monitoring** checkbox and click on the "**Save** button.
+1.  Under the **Information Protection** section click on **Files** and check the **Enable file monitoring** checkbox and click on the "**Save** button.
 
     ![Enable files](Media/conf-files.png "Enable files")
 
@@ -104,11 +63,11 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 ## Create a Developer Box Account
 [:arrow_up: Top](#lab-environment-configuration)
 
-1. [] Next, open a new tab in your browser and navigate to ```https://developer.box.com``` and click on **Get Started**. 
+1.  Next, open a new tab in your browser and navigate to ```https://developer.box.com``` and click on **Get Started**. 
 
 	![Boxdev](Media/box-getstarted.png)
 
-2. [] **Enter the values** from the table below, **check the box** to solve the captcha, and click **Submit**.
+2.  **Enter the values** from the table below, **check the box** to solve the captcha, and click **Submit**.
 
 	|||
 	|-----|-----|
@@ -117,15 +76,15 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 
 	![Open Screenshot](Media/box-signup.png)
 
-3. [] In a new tab, browse to ```https://outlook.office365.com/OWA```. 
-1. [] If prompted, choose a time zone and click **Save**.
-1. [] In the MOD Admin inbox, click on **Other** mail, search for the **Box** confirmation email and click the **Verify Email**. link in the email from Box.
+3.  In a new tab, browse to ```https://outlook.office365.com/OWA```. 
+1.  If prompted, choose a time zone and click **Save**.
+1.  In the MOD Admin inbox, click on **Other** mail, search for the **Box** confirmation email and click the **Verify Email**. link in the email from Box.
 
 	![Open Screenshot](Media/box-verify.png)
 
-1. [] In the new window that opens, enter the password to use with **Box**. We'll use ```@lab.CloudCredential(139).password``` in **each of the password boxes**. Click the **Update** button to save your password.
+1.  In the new window that opens, enter the password to use with **Box**. We'll use ```@lab.CloudCredential(139).password``` in **each of the password boxes**. Click the **Update** button to save your password.
 
-1. [] You can now close the **Box** and **Office 365 mailbox** tabs.
+1.  You can now close the **Box** and **Office 365 mailbox** tabs.
 
 ---
 
@@ -134,21 +93,21 @@ To be able to complete the different parts of the Cloud App Security labs, the f
 
 To connect Cloud App Security to Office 365, you will have to use the Office 365 app connector. **App connectors** use the APIs of app providers to enable greater visibility and control by Microsoft Cloud App Security over the apps you connect to.  We will also use this method to show integration with the 3rd Party API for Box.
 
-1. [] Open a new tab in your browser and navigate to ```https://portal.cloudappsecurity.com```
+1.  Open a new tab in your browser and navigate to ```https://portal.cloudappsecurity.com```
 
-2. [] Go to the gear icon and select **App connectors**.
+2.  Go to the gear icon and select **App connectors**.
 
     ![App connector](Media/conf-appconnector.png "App connector")
 
-3. [] Click on the **+** button and select Office 365.
+3.  Click on the **+** button and select Office 365.
 
     ![Add Office](Media/conf-addoffice.png "Add Office")
 
-4. [] Click on **Connect Office 365**. Cloud App Security will then have access to Office 365 activities and files.
+4.  Click on **Connect Office 365**. Cloud App Security will then have access to Office 365 activities and files.
 
     ![Open Screenshot](Media/conf-connectoffice.png "Connect Office")
 
-5. [] Click on **Test now** to validate the configuration.
+5.  Click on **Test now** to validate the configuration.
 
     ![Open Screenshot](Media/conf-testoffice.png "Test connectivity")
 
@@ -159,41 +118,41 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 ## Connecting Box to Cloud App Security
 [:arrow_up: Top](#lab-environment-configuration)
 
-1. []  Click on the **+** button again, and this time click on **Box**.
+1.   Click on the **+** button again, and this time click on **Box**.
 
 	![2](Media/box-connect.png)
 
-1. [] In the Instance name box, type ```Box API Demo```, and click **Connect Box**.
+1.  In the Instance name box, type ```Box API Demo```, and click **Connect Box**.
 
 	![Open Screenshot](Media/apiBox3.JPG)
 
-1. [] In the Connect Box dialog, click **follow this link**.
+1.  In the Connect Box dialog, click **follow this link**.
 
 	![4](Media/box-follow.png)
 
-1. [] Log into Box using the credentials below:
+1.  Log into Box using the credentials below:
 
 	```@lab.CloudCredential(139).Username```
 
 	```@lab.CloudCredential(139).Password```
 
-1. [] Click on the **Authorize** button.
+1.  Click on the **Authorize** button.
 
-1. [] Click on **Grant access to Box**
+1.  Click on **Grant access to Box**
 
 	![Open Screenshot](Media/box-grant.png)
 
-1. [] Close the Connect Box dialog and click on **Box API Demo** to expand.
+1.  Close the Connect Box dialog and click on **Box API Demo** to expand.
 
-1. [] Click on the **Test now** button.
+1.  Click on the **Test now** button.
 
 	![Open Screenshot](Media/apiBox7.JPG)
 
-	> [!KNOWLEDGE] Once the connection is succesful - it will say **Connected.** 
+	> :information_source: Once the connection is succesful - it will say **Connected.** 
 	>
 	> ![8](Media/apiBox8.JPG)
 
-1. []  Close the dialog and you should be able to see **Box API Demo** as a **Connected** app in the list. 
+1.   Close the dialog and you should be able to see **Box API Demo** as a **Connected** app in the list. 
 
 	![Open Screenshot](Media/apiBox9.JPG) 
 
@@ -204,11 +163,11 @@ To connect Cloud App Security to Office 365, you will have to use the Office 365
 
 To prepare the **Information Protection** lab, we have to enable the integration between Cloud App Security and Azure Information Protection as explained in the [Cloud App Security documentation](https://docs.microsoft.com/en-us/cloud-app-security/azip-integration). Enabling the integration between the two solutions is as easy as selecting one single checkBox.
 
-1. [] Click on the **Gear** icon and then **Settings**.
+1.  Click on the **Gear** icon and then **Settings**.
 
     ![Settings](Media/conf-settings.png "Settings")
 
-2. [] Go down in the settings to the **Azure Information Protection** section and check the **Automatically scan new files** checkBox and click on the "**Save** button.
+2.  Go down in the settings to the **Azure Information Protection** section and check the **Automatically scan new files** checkBox and click on the "**Save** button.
     ![Enable AIP](Media/conf-aip.png "Enable AIP")
 
 >[!NOTE]: It can take up to **1h** for Cloud App Security to sync the Azure Information classifications.
@@ -217,13 +176,13 @@ To prepare the **Information Protection** lab, we have to enable the integration
 
 # Lab Environment Setup Complete
 
-1. [] The lab environment setup is now complete. In the next section you will start the lab.
+1.  The lab environment setup is now complete. In the next section you will start the lab.
 
 ===
 
 ## Labs
 
-> [!ALERT] Before going to the different labs section, please be sure to complete the **[environment preparation](#lab-environment-configuration)**.
+> :warning: Before going to the different labs section, please be sure to complete the **[environment preparation](#lab-environment-configuration)**.
 
 The different Cloud App Security capabilities covered in the labs are:
 
@@ -269,11 +228,11 @@ You can upload batches of 20 logs of 1 GB max at a time and they will parse into
 
 To create snapshot reports:
 
-1. [] Go to the **Discover** section and click on **Create snapshot report**.
+1.  Go to the **Discover** section and click on **Create snapshot report**.
 
     ![Open Screenshot](Media/dis-newsnaphsot.png "Create snapshot")
 
-1. [] In the Add data source window, use the settings below (do not close the window yet) and click on **View and verify...**.
+1.  In the Add data source window, use the settings below (do not close the window yet) and click on **View and verify...**.
 
     >|||
     >|---------|---------|
@@ -282,31 +241,31 @@ To create snapshot reports:
     >|Data Source| **SQUID (Common)**|
     >|Anonymize private information |**Check the Box**|
 
-1. [] Click on **View and Verify** in the window and then click on the **Download sample log** button and save it to your desktop. 
+1.  Click on **View and Verify** in the window and then click on the **Download sample log** button and save it to your desktop. 
 
 	![Open Screenshot](Media/dis-createsnapshot.png "New snapshot")
 
     ![Open Screenshot](Media/dis-squiddownload.png "Download log")
 
-1. [] Close that window.
+1.  Close that window.
 
-1. [] Click on the **Browse** button and in the new window, select the log you downloaded and click **Open**.
+1.  Click on the **Browse** button and in the new window, select the log you downloaded and click **Open**.
 
     ![Open Screenshot](Media/dis-browse.png "Browse logs")
 
     ![Open Screenshot](Media/dis-squidselect.png "Select logs")
 
-1. [] Now that the log has been selected, click on the **Create** button to create your report.
+1.  Now that the log has been selected, click on the **Create** button to create your report.
 
     ![Open Screenshot](Media/dis-squidcreate.png "Create snapshot")
 
-1. [] Your report will then be processed. It will take a couple of minutes before it's marked as **Ready**.
+1.  Your report will then be processed. It will take a couple of minutes before it's marked as **Ready**.
 
     ![Report processing](Media/dis-processing.png "Report processing")
 
     ![Report processing](Media/dis-reportready.png "Report processing")
 
-1. [] Once your report is marked as ready, click on the text **Ready**. You will be redirected to your snapshot report where you can start exploring the discovered apps, users, IPs.
+1.  Once your report is marked as ready, click on the text **Ready**. You will be redirected to your snapshot report where you can start exploring the discovered apps, users, IPs.
  
     > [!NOTE] If after a couple of minutes the status hasn't change, **refresh** the page in your browser.
 
@@ -324,53 +283,53 @@ To create snapshot reports:
 After network logs have been parsed, Cloud App Security provides reports on the applications used within the company.
 In this section, we will explore how you can review the discovered apps and categorize them.
 
-1. [] On the **Dicovery dashboard**, Cloud App Security shows a summary or the discovered apps, their risks and categories.
+1.  On the **Dicovery dashboard**, Cloud App Security shows a summary or the discovered apps, their risks and categories.
 
     ![Dashboard](Media/review1.png "Dashboard")
 
-1. [] Click on the **Discovered apps** tab
+1.  Click on the **Discovered apps** tab
 
     ![Open Screenshot](Media/review2.png "Report")
 
-1. [] You have here discovered apps and their risk scores, calculated using different criteria like **General**, **Security**, **Compliance** and **Legal** capabilities of the apps.
+1.  You have here discovered apps and their risk scores, calculated using different criteria like **General**, **Security**, **Compliance** and **Legal** capabilities of the apps.
 
-1. [] Click on **Microsoft SharePoint Online**. You can see the different capabilities of the app assessed by Cloud App Security.
+1.  Click on **Microsoft SharePoint Online**. You can see the different capabilities of the app assessed by Cloud App Security.
 
-    > [!KNOWLEDGE] The **green checkmark** indicate that this application is **Sanctioned** (approved and managed by the company IT).
+    > :information_source: The **green checkmark** indicate that this application is **Sanctioned** (approved and managed by the company IT).
 
     ![Open Screenshot](Media/review3.png "Report")
 
     ![SharePoint](Media/review4.png "Report")
 
-1. [] Go back to the top of the page and search for apps with a **Risk score** between **0 and 3**. Those apps are considered as **High risk** apps.
+1.  Go back to the top of the page and search for apps with a **Risk score** between **0 and 3**. Those apps are considered as **High risk** apps.
 
     ![Open Screenshot](Media/review5.png "Report")
 
-1. [] On the left of the screen, you can see the different **categories** of those high risk apps. Click on **Cloud storage** to discover risky apps used within the company to store files.
+1.  On the left of the screen, you can see the different **categories** of those high risk apps. Click on **Cloud storage** to discover risky apps used within the company to store files.
 
     ![Open Screenshot](Media/review6.png "Report")
 
-1. [] Review the apps capabilities. You can see for this example that the app do not provide **auditing** or **SAML suppport for SSO** capabilities which are probably required to be acceptable in your organization.
+1.  Review the apps capabilities. You can see for this example that the app do not provide **auditing** or **SAML suppport for SSO** capabilities which are probably required to be acceptable in your organization.
 
     ![Review](Media/review7.png "Report")
 
-1. [] As those apps are not compliant with your organization requirements, **tag** those apps as **Unsanctioned** (not managed and accepted by the company IT).
+1.  As those apps are not compliant with your organization requirements, **tag** those apps as **Unsanctioned** (not managed and accepted by the company IT).
 
     ![Review](Media/review8.png "Report")
 
-    > [!KNOWLEDGE] This app classification can be automated using **automatic** logs upload and **Discovery policies**, which we do not cover in this lab but that are normally used in production environments.
+    > :information_source: This app classification can be automated using **automatic** logs upload and **Discovery policies**, which we do not cover in this lab but that are normally used in production environments.
 
-1. [] Now that we have classified our apps, Cloud App Security can generate **block scripts** for configuring your network appliance to prevent your users to access those apps.
+1.  Now that we have classified our apps, Cloud App Security can generate **block scripts** for configuring your network appliance to prevent your users to access those apps.
 
-1. [] Click on this icon at the top of the page and select **Generate block script**.
+1.  Click on this icon at the top of the page and select **Generate block script**.
 
     ![Review](Media/review9.png "Report")
 
-1. [] Select **PA Series Firewall**. This will generate a configuration script for **Palo Alto firewalls** with the apps domains or IPs to block.
+1.  Select **PA Series Firewall**. This will generate a configuration script for **Palo Alto firewalls** with the apps domains or IPs to block.
 
     ![Open Screenshot](Media/review10.png "Report")
 
-1. [] **Open** the generated script. You can see here the domains to block to prevent access to the apps marked as **Unsantionned**.
+1.  **Open** the generated script. You can see here the domains to block to prevent access to the apps marked as **Unsantionned**.
 
     ![Open Screenshot](Media/review11.png "Report")
 
@@ -382,11 +341,11 @@ In this section, we will explore how you can review the discovered apps and cate
 In this task we will generate a detailed **report** that can be sent to your company executives.
 This report contains information about the discovered apps, their risks and usage and the **recommended actions**.
 
-1. [] Click on this icon at the top of the page and select **Generate Cloud Discovery executive reports**. Cloud App Security will then create a **PDF report** that can be sent to your management. 
+1.  Click on this icon at the top of the page and select **Generate Cloud Discovery executive reports**. Cloud App Security will then create a **PDF report** that can be sent to your management. 
 
     ![Review](Media/review13.png "Report")
 
-1. [] Open the generated report and review its content.
+1.  Open the generated report and review its content.
 
    ![Review](Media/review14.png "Report")
 
@@ -431,15 +390,15 @@ The different steps of this lab are:
 ## App Control Configuration
 [:arrow_left: Home](#labs)
 
-1. [] Go to the Azure portal ```https://portal.azure.com``` and open the **Azure Active Directory** blade.
+1.  Go to the Azure portal ```https://portal.azure.com``` and open the **Azure Active Directory** blade.
 
    ![Open Screenshot](Media/aad-1.png)
 
-1. [] Scroll down to **Security** and click on **Conditional Access**.
+1.  Scroll down to **Security** and click on **Conditional Access**.
 
    ![Open Screenshot](Media/aad-2.png)
 
-1. [] Create a new conditional access policy with the following settings:
+1.  Create a new conditional access policy with the following settings:
 
    |Name|Assignments|Apps|
    |-----|-----|-----|
@@ -463,7 +422,7 @@ The different steps of this lab are:
 
     1. In the dropdown menu, select **Use custom policy**
 
-    > [!KNOWLEDGE] **Monitor only** or **Block downloads** helps you to perform the related configuration in Cloud App Security for easy onboarding. For this lab, we want you to perform the **full** configuration in Azure AD and Cloud App Security.
+    > :information_source: **Monitor only** or **Block downloads** helps you to perform the related configuration in Cloud App Security for easy onboarding. For this lab, we want you to perform the **full** configuration in Azure AD and Cloud App Security.
 
        ![Open Screenshot](Media/cond-policy-4.png)
 
@@ -471,11 +430,11 @@ The different steps of this lab are:
 
        ![Open Screenshot](Media/cond-policy-5.png)
 
-1. [] Sign out of the Azure Portal and close you browser.
+1.  Sign out of the Azure Portal and close you browser.
 
-1. [] Open your browser and go to the Exchange Web App ```https://outlook.office.com```.
+1.  Open your browser and go to the Exchange Web App ```https://outlook.office.com```.
 
-1. [] Connect using :
+1.  Connect using :
 
     >```@lab.CloudCredential(139).Username```
     >
@@ -483,7 +442,7 @@ The different steps of this lab are:
 
     > [!HINT] This is done to force the use of conditional access. Once a session has been redirected to Cloud App Security, you will be able to configure the application for App Control in Cloud App Security.
 
-1. [] Go back to Cloud App Security ```https://portal.cloudappsecurity.com```, click on the **Gear** icon and click on **Conditional Access App Control**.
+1.  Go back to Cloud App Security ```https://portal.cloudappsecurity.com```, click on the **Gear** icon and click on **Conditional Access App Control**.
   
    ![Open Screenshot](Media/appc-office-1.png)
 
@@ -491,11 +450,11 @@ The different steps of this lab are:
 
    ![Open Screenshot](Media/appc-office-5.png)
 
-1. [] On the left hand side click on **Control** and then **Policies**.
+1.  On the left hand side click on **Control** and then **Policies**.
 
    ![Open Screenshot](Media/appc-office-6.png)
 
-1. [] Click on **Create Policy** and click on **Session policy**.
+1.  Click on **Create Policy** and click on **Session policy**.
 
      ![Open Screenshot](Media/appc-office-7.png)
 
@@ -532,7 +491,7 @@ The different steps of this lab are:
 
 Now is time to test our configuration. We will here simulate the user experience while accessing company apps protected by Cloud App Security from an unmanaged device
 
-1. [] Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
+1.  Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
    >```@lab.CloudCredential(139).Username```
    >
@@ -544,13 +503,13 @@ Now is time to test our configuration. We will here simulate the user experience
 
    ![Warning](Media/appc-office-12.png)
 
-1. [] You are now directed to Exchange Online and your session is now passing **through** Cloud App Security.
+1.  You are now directed to Exchange Online and your session is now passing **through** Cloud App Security.
 
     > [!HINT] By taking a look at the **URL**, you can verify that your session is actually being redirected to **Cloud App Security**.
 
    ![Session](Media/appc-office-13.png)
 
-1. [] To test our policy, perform the following:
+1.  To test our policy, perform the following:
 
     1. On @lab.VirtualMachine(Client01).SelectLink, **unzip** the file **"Demo files.zip"**
 
@@ -560,20 +519,20 @@ Now is time to test our configuration. We will here simulate the user experience
 
        ![Test](Media/appc-office-14.png)
 
-    1. [] Wait until you receive your email in the web mail.
+    1.  Wait until you receive your email in the web mail.
 
     1. Once the message is received, click on the attached document **Personal employees information.docx**. This will open the file preview.
     As you can see, the user can access the document using the Office Online app.
 
         ![Warning](Media/appc-office-15.png)
 
-    1. [] Try now to download the **Personal employees information.docx** document. As this file contains social security numbers, the download will be blocked and will trigger an alert in Cloud App Security.
+    1.  Try now to download the **Personal employees information.docx** document. As this file contains social security numbers, the download will be blocked and will trigger an alert in Cloud App Security.
 
        ![Test](Media/appc-office-16.png)
     
        ![Test](Media/appc-office-17.png)
 
-    1. [] Now let's try to download the **Workplace Innovation.xlsx** spreadsheet. As this file **do not** contain social security numbers, the download will be allowed.
+    1.  Now let's try to download the **Workplace Innovation.xlsx** spreadsheet. As this file **do not** contain social security numbers, the download will be allowed.
 
        ![Test](Media/appc-office-18.png)
     
@@ -583,7 +542,7 @@ Now is time to test our configuration. We will here simulate the user experience
     
        ![Test](Media/appc-office-21.png)
 
-> [!KNOWLEDGE] We just demonstrated App Control capabilities to go further than just allow/block scenarios, based on session risks. This capability can open many scenarios, like BYOD access for example.
+> :information_source: We just demonstrated App Control capabilities to go further than just allow/block scenarios, based on session risks. This capability can open many scenarios, like BYOD access for example.
 
 ====
 
@@ -592,25 +551,25 @@ Now is time to test our configuration. We will here simulate the user experience
 
 Now that we validated our configuration, let's go back to the admin view.
 
-1. [] Go back to the Cloud App Security console ```https://portal.cloudappsecurity.com```
+1.  Go back to the Cloud App Security console ```https://portal.cloudappsecurity.com```
 
-1. [] Go to the **Alerts** page.
+1.  Go to the **Alerts** page.
 
    ![Open Screenshot](Media/appc-admin-1.png)
 
-1. [] Click on the alert generated by our policy.
+1.  Click on the alert generated by our policy.
 
    ![Menu](Media/appc-admin-2.png)
 
-1. [] On the alert page, you can see that the **admin** user tried to download a file named **Personal employees information.docx** but **Session control** blocked the download. You also see the name of the policy that triggered the alert.
+1.  On the alert page, you can see that the **admin** user tried to download a file named **Personal employees information.docx** but **Session control** blocked the download. You also see the name of the policy that triggered the alert.
 
    ![Menu](Media/appc-admin-3.png)
 
-1. [] To go further in the investigation, click on  **View all user activity**. This will redirect you to the Activity log where you can see all the user activities.
+1.  To go further in the investigation, click on  **View all user activity**. This will redirect you to the Activity log where you can see all the user activities.
 
    ![Menu](Media/appc-admin-4.png)
 
-1. [] By looking at the user activities, you can follow her/his trace:
+1.  By looking at the user activities, you can follow her/his trace:
 
     1. Below, you can see that the user was **redirected** to Cloud App Security
 
@@ -652,25 +611,25 @@ In this lab, we will automate alerts resolution for one of the policy we created
 
 For this lab, we'll need to create a new Teams' team for our SOC where Cloud App Security **alerts** will be posted, using Microsoft Flow automation.
 
-1. [] Open a **new tab** in your browser and go to ```https://teams.microsoft.com```. If needed, connect using:
+1.  Open a **new tab** in your browser and go to ```https://teams.microsoft.com```. If needed, connect using:
 
     >```@lab.CloudCredential(139).Username```
     >
     >```@lab.CloudCredential(139).Password```
 
-1. [] Click on the **Teams icon** and click on the **Create team** button.
+1.  Click on the **Teams icon** and click on the **Create team** button.
 
     ![Open Screenshot](Media/teams1.png)
 
-1. [] For the team's **name** use ```SOC team``` and keep **Privacy** at **Private**. Click then on **Next**.
+1.  For the team's **name** use ```SOC team``` and keep **Privacy** at **Private**. Click then on **Next**.
 
     ![Open Screenshot](Media/teams2.png)
 
-1. [] On the **Add members to SOC team** page, click on the **Skip** button.
+1.  On the **Add members to SOC team** page, click on the **Skip** button.
 
     ![Open Screenshot](Media/teams3.png)
 
-1. [] You can now see that you just created a new team named **SOC team** with a channel named **General**
+1.  You can now see that you just created a new team named **SOC team** with a channel named **General**
 
     ![Open Screenshot](Media/teams4.png)
 
@@ -679,17 +638,17 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 ## Generate a security token
 [:arrow_up: Top](#create-a-teams-channel-for-your-soc-team)
 
-1. [] Go to Cloud App Security ```https://portal.cloudappsecurity.com```, click on the **Gear** icon and click on **Security extensions**.
+1.  Go to Cloud App Security ```https://portal.cloudappsecurity.com```, click on the **Gear** icon and click on **Security extensions**.
   
    ![Open Screenshot](Media/flow2.png)
 
-1. [] In the **API token** tab, click on the **+** icon to generate a new **token**.
+1.  In the **API token** tab, click on the **+** icon to generate a new **token**.
   
    ![Open Screenshot](Media/flow8.png)
 
-    > [!KNOWLEDGE] This **API token** will be used by **Flow** to access Cloud App Security alerts. The same token can be used to access Cloud App Security programmatically using PowerShell, for example.
+    > :information_source: This **API token** will be used by **Flow** to access Cloud App Security alerts. The same token can be used to access Cloud App Security programmatically using PowerShell, for example.
 
-1. [] Name your token ```Flow``` and click on **Generate**.
+1.  Name your token ```Flow``` and click on **Generate**.
   
    ![Open Screenshot](Media/flow9.png)
 
@@ -700,51 +659,51 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 ## Create a Flow posting alerts in Microsoft Teams
 [:arrow_up: Top](#create-a-teams-channel-for-your-soc-team)
 
-1. [] Open a **new tab** in your browser and go to Cloud App Security ```https://portal.cloudappsecurity.com```. Click on the **Gear** icon and click on **Security extensions**.
+1.  Open a **new tab** in your browser and go to Cloud App Security ```https://portal.cloudappsecurity.com```. Click on the **Gear** icon and click on **Security extensions**.
   
    ![Open Screenshot](Media/flow2.png)
 
-1. [] Click on the **Playbooks** tab and click on the **+** icon.
+1.  Click on the **Playbooks** tab and click on the **+** icon.
 
     ![Open Screenshot](Media/flow3.png)
 
-1. [] You are redirected to **Microsoft Flow** page. Click on the **Get started** button.
+1.  You are redirected to **Microsoft Flow** page. Click on the **Get started** button.
 
     ![Open Screenshot](Media/flow4.png)
 
-1. [] Click on the **New** button and select **Create from blank**.
+1.  Click on the **New** button and select **Create from blank**.
 
     ![Open Screenshot](Media/flow5.png)
 
-1. [] Click on the **Create from blank**.
+1.  Click on the **Create from blank**.
 
     ![Open Screenshot](Media/flow6.png)
 
-1. [] Search for the ```cloud app security``` **connector** and click on the **When an alert is generated** trigger.
+1.  Search for the ```cloud app security``` **connector** and click on the **When an alert is generated** trigger.
 
     ![Open Screenshot](Media/flow7.png)
 
-1. [] As **Connection name** use ```Lab``` and use the **API token** generated in the previous task. It should be in the **other open Cloud App Security tab** as we didn't close it.
+1.  As **Connection name** use ```Lab``` and use the **API token** generated in the previous task. It should be in the **other open Cloud App Security tab** as we didn't close it.
 
     ![Open Screenshot](Media/flow10.png)
 
     ![Open Screenshot](Media/flow9.png)
 
-1. [] **Flow** has now access to **Cloud App Security**.
+1.  **Flow** has now access to **Cloud App Security**.
 
     ![Open Screenshot](Media/flow11.png)
 
-1. [] Click on **New step**.
+1.  Click on **New step**.
 
     ![Open Screenshot](Media/flow12.png)
 
-1. [] In the search bar, type ```teams```and click on **Post message**.
+1.  In the search bar, type ```teams```and click on **Post message**.
 
     ![Open Screenshot](Media/flow13.png)
 
-    > [!KNOWLEDGE] We are here using Flow to post messages containing **information about the alert** in **Microsoft Teams**. As Flow integrates with hundreds of 3rd party connectors, you could do the same with Exchange Online, Slack, ServiceNow, Jira and more !
+    > :information_source: We are here using Flow to post messages containing **information about the alert** in **Microsoft Teams**. As Flow integrates with hundreds of 3rd party connectors, you could do the same with Exchange Online, Slack, ServiceNow, Jira and more !
 
-1. [] Customize the message to post.
+1.  Customize the message to post.
 
     1. **Team id**: select **Soc team**
 
@@ -756,26 +715,26 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
     > [!HINT] For this exercise, we are posting basic information in Teams but you could use the Azure AD connector to get more information about the user and then configuring it to use MFA for example.
 
-1. [] Click on the **Save** button.
+1.  Click on the **Save** button.
 
     ![Open Screenshot](Media/flow13.png)
 
-1. [] **Close** the Flow page.
+1.  **Close** the Flow page.
 
 ---
 
 ## Configure a policy to use Flow
 [:arrow_up: Top](#create-a-teams-channel-for-your-soc-team)
 
-1. [] Go back to Cloud App Security ```https://portal.cloudappsecurity.com``` and go to the **Policy** section.
+1.  Go back to Cloud App Security ```https://portal.cloudappsecurity.com``` and go to the **Policy** section.
   
    ![Open Screenshot](Media/flowpolicy1.png)
 
-1. [] Open the **Proxy - Block sensitive files download** App Control policy that we created in the previous lab.
+1.  Open the **Proxy - Block sensitive files download** App Control policy that we created in the previous lab.
 
     ![Open Screenshot](Media/flowpolicy2.png)
 
-1. [] Go to the bottom of the page, check the **Send alerts to Flow** checkbox, **select the Flow you created** and click **Update**.
+1.  Go to the bottom of the page, check the **Send alerts to Flow** checkbox, **select the Flow you created** and click **Update**.
 
     ![Open Screenshot](Media/flowpolicy3.png)
 
@@ -784,7 +743,7 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 ## Test the created Flow execution
 [:arrow_left: Flow lab](#integrating-microsoft-flow-with-cloud-app-security)
 
-1. [] Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
+1.  Sign out, close you browser and open the Exchange Web App ```https://outlook.office.com```. Use the following credentials to connect:
   
    >```@lab.CloudCredential(139).Username```
    >
@@ -796,7 +755,7 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 
    ![Warning](Media/appc-office-12.png)
 
-1. [] You are now directed to Exchange Online and your session is now passing **through** Cloud App Security.
+1.  You are now directed to Exchange Online and your session is now passing **through** Cloud App Security.
 
    ![Session](Media/appc-office-13.png)
 
@@ -811,13 +770,13 @@ For this lab, we'll need to create a new Teams' team for our SOC where Cloud App
 ## Verify the message in Teams
 [:arrow_up: Top](#test-the-created-flow-execution)
 
-1. [] Open a **new tab** in your browser and go to ```https://teams.microsoft.com```.
+1.  Open a **new tab** in your browser and go to ```https://teams.microsoft.com```.
 
-1. [] Go to the **SOC team** Team and open the **General** channel.
+1.  Go to the **SOC team** Team and open the **General** channel.
 
     ![Open Screenshot](Media/flowalert1.png)
 
-1. [] In the **General** channel you can see now that the **Flow** posted a new message with the **alert information** you configured.
+1.  In the **General** channel you can see now that the **Flow** posted a new message with the **alert information** you configured.
 
     ![Open Screenshot](Media/flowalert2.png)
 
@@ -835,7 +794,7 @@ Those policies are enabled by default and after an initial learning period, Clou
 
 ===
 
-> [!ALERT] It can take **up to 24 hours** for the auditing in Office 365 to be configured, meaning that Cloud App Security will not receive the activities events. As many alerts relies on activities events to work, we will be **using a pre-populated tenant** for this portion of the lab so we can see alerts and have the ability to investigate them.
+> :warning: It can take **up to 24 hours** for the auditing in Office 365 to be configured, meaning that Cloud App Security will not receive the activities events. As many alerts relies on activities events to work, we will be **using a pre-populated tenant** for this portion of the lab so we can see alerts and have the ability to investigate them.
 
 > [!HINT] LOG OUT OF YOUR CURRENT CLOUD APP SECURITY TENANT AND LOG BACK IN USING THE CREDENTIALS BELOW.
 
@@ -869,7 +828,7 @@ This detection identifies that users were active from an IP address that has bee
 
 As your authentication during the previous steps came from an anonymous IP address, it will be detected as suspicious by Cloud App Security.
 
-1. [] Go back to the Cloud App Security portal and review the alerts.
+1.  Go back to the Cloud App Security portal and review the alerts.
 
    ![MCAS alerts menu](Media/td-alerts.png "Security Alerts")
 
@@ -877,21 +836,21 @@ As your authentication during the previous steps came from an anonymous IP addre
 
    ![TOR alert](Media/td-toralert.png "TOR alert")
 
-2. [] Click on the alert to open it.
+2.  Click on the alert to open it.
    You see in this page more information on the alert and the related activities:
 
    ![TOR alert](Media/td-toralert-details.png "TOR alert details")
 
-3. [] Click on the activities to get more information on the specific activity, the user and the IP address:
+3.  Click on the activities to get more information on the specific activity, the user and the IP address:
 
    ![TOR alert](Media/td-toralert-details-user.png "TOR alert user")
    ![TOR alert](Media/td-toralert-details-ip.png "TOR alert IP address")
 
-4. [] You can go further in your investigation by looking at the related actions performed during that session by clicking on the “investigate in activity log" button:
+4.  You can go further in your investigation by looking at the related actions performed during that session by clicking on the “investigate in activity log" button:
 
    ![TOR alert](Media/td-toralert-details-activities.png "TOR alert activities")
 
-5. [] You will then be redirected to the activity log where you will be able to investigate on the actions performed during that session, like configuration changes or data exfiltration.
+5.  You will then be redirected to the activity log where you will be able to investigate on the actions performed during that session, like configuration changes or data exfiltration.
 
 ---
 
@@ -904,7 +863,7 @@ This detection identifies two user activities (is a single or multiple sessions)
 
 As the first and the second authentication came from distinct locations, Cloud App Security will detect that those time to travel between those two locations was to short and will then alert you.
 
-1. [] Go back to the Cloud App Security portal and review the alerts.
+1.  Go back to the Cloud App Security portal and review the alerts.
 
    ![MCAS alerts menu](Media/td-alerts.png "Security Alerts")
 
@@ -912,11 +871,11 @@ As the first and the second authentication came from distinct locations, Cloud A
 
    ![Impossible travel alert](Media/td-impossibletravelalert.png "Impossible travel alert")
 
-2. [] The investigation steps are similar to the anonymous access but by looking at the IP address details and the **ISP**, you will be able to determine the possible risk:
+2.  The investigation steps are similar to the anonymous access but by looking at the IP address details and the **ISP**, you will be able to determine the possible risk:
 
    ![Impossible travel alert](Media/td-impossibletravelalert-details.png "Impossible travel alert details")
 
-	> [!KNOWLEDGE] To reduce the amount of false positives, edit the impossible travel policy. 
+	> :information_source: To reduce the amount of false positives, edit the impossible travel policy. 
 	>  
 	> **You can adjust the policy by clicking on the alert and *Resolve* and click on *Adjust policy.**
 	> 
@@ -948,7 +907,7 @@ This detection considers past activity locations to determine new and infrequent
 
 After an initial learning period, Cloud App Security will detect that this location was not used before by your user or other people within the organization and will then alert you.
 
-1. [] Go back to the Cloud App Security portal and review the alerts.
+1.  Go back to the Cloud App Security portal and review the alerts.
 
    ![MCAS alerts menu](Media/td-alerts.png "Security Alerts")
 
@@ -956,7 +915,7 @@ After an initial learning period, Cloud App Security will detect that this locat
 
    ![Infrequent country alert](Media/td-infrequentcountryalert.png "Infrequent country alert")
 
-2. [] The investigation steps are similar to the anonymous access but by looking at the IP address details and the ISP, you will be able to determine the possible risk. In this specific example, we see it’s coming from a TOR IP, so this authentication is suspicious:
+2.  The investigation steps are similar to the anonymous access but by looking at the IP address details and the ISP, you will be able to determine the possible risk. In this specific example, we see it’s coming from a TOR IP, so this authentication is suspicious:
 
    ![Infrequent country alert](Media/td-infrequentcountryalert-details.png "Infrequent country alert details")
 
@@ -975,7 +934,7 @@ This detection identifies malicious files in your cloud storage, whether they're
 
 ### Investigate
 
-1. [] Go back to the Cloud App Security portal and review the alerts.
+1.  Go back to the Cloud App Security portal and review the alerts.
 
    ![MCAS alerts menu](Media/td-alerts.png "Security Alerts")
 
@@ -983,19 +942,19 @@ This detection identifies malicious files in your cloud storage, whether they're
 
    ![Malware detected alert](Media/td-malwarealert.png "Malware detected alert")
 
-2. [] Click on the alert to open it. You see in this page more information on the alert and the related activities:
+2.  Click on the alert to open it. You see in this page more information on the alert and the related activities:
 
    ![Malware detected alert](Media/td-malwarealert-details.png "Malware detected alert")
 
-3. [] In the alert, you have more information on the file and its location, but also the malware that we identified:
+3.  In the alert, you have more information on the file and its location, but also the malware that we identified:
 
    ![Malware family](Media/td-malwarefamily.png "Malware family")
 
-4. [] Click on the malware type link to have access to the Microsoft Threat Intelligence report regarding this file:
+4.  Click on the malware type link to have access to the Microsoft Threat Intelligence report regarding this file:
 
    ![Malware family](Media/td-malwarefamilymti.png "Malware family")
 
-5. [] Back in the alert, you can scroll down to the related activities. There, you will have more information on how the file was uploaded to OneDrive and possibly who downloaded it:
+5.  Back in the alert, you can scroll down to the related activities. There, you will have more information on how the file was uploaded to OneDrive and possibly who downloaded it:
 
    ![Malware family](Media/td-malwarealert-activities.png "Malware family")
 
@@ -1011,7 +970,7 @@ This detection looks for suspicious email forwarding rules, for example, if a us
 
 As the rules redirects your user’s emails to a suspicious external address, Cloud App Security will detect this rule creation and will then alert you.
 
-1. [] Go back to the Cloud App Security portal and review the alerts.
+1.  Go back to the Cloud App Security portal and review the alerts.
 
    ![MCAS alerts menu](Media/td-alerts.png "Security Alerts")
 
@@ -1019,11 +978,11 @@ As the rules redirects your user’s emails to a suspicious external address, Cl
 
    ![Suspicious forwarding alert](Media/td-suspiciousforwardingalert.png "Suspicious forwarding alert")
 
-2. [] Click on the alert to open it. You see in this page more information on the alert, like the **destination address** and the related activities:
+2.  Click on the alert to open it. You see in this page more information on the alert, like the **destination address** and the related activities:
 
    ![Suspicious forwarding alert](Media/td-suspiciousforwardingalert-details.png "Suspicious forwarding alert")
 
-3. [] With this information, you can now go back to the user to remove this rule but also investigate in Exchange trace logs which emails were sent to that destination address.
+3.  With this information, you can now go back to the user to remove this rule but also investigate in Exchange trace logs which emails were sent to that destination address.
 
 ---
 
@@ -1037,7 +996,7 @@ Cloud App Security extended its ransomware detection capabilities with anomaly d
 
 As the rules redirects your user’s emails to a suspicious external address, Cloud App Security will detect this rule creation and will then alert you.
 
-1. [] Go back to the Cloud App Security portal and review the alerts.
+1.  Go back to the Cloud App Security portal and review the alerts.
 
    ![MCAS alerts menu](Media/td-alerts.png "Security Alerts")
 
@@ -1045,19 +1004,19 @@ As the rules redirects your user’s emails to a suspicious external address, Cl
 
    ![Ransomware alert](Media/td-ransomwarealert.png "Ransomware alert")
 
-2. [] Click on the alert to open it. You see in this page more information on the impacted user, the number of encrypted files, the location of the files and the related activities:
+2.  Click on the alert to open it. You see in this page more information on the impacted user, the number of encrypted files, the location of the files and the related activities:
 
    ![Ransomware alert](Media/td-ransomwarealert-details.png "Ransomware alert")
 
-3. [] Now that we’ve seen the alert, let’s go back to the policies:
+3.  Now that we’ve seen the alert, let’s go back to the policies:
 
    ![Policies](Media/td-policies.png "Policies")
 
-4. [] Search for the “Ransomware activity” policy and open it:
+4.  Search for the “Ransomware activity” policy and open it:
 
    ![Ransomware policy](Media/td-policiesransomware.png "Ransomware policies")
 
-5. [] At the bottom of the policy, review the possible alerts and governance actions:
+5.  At the bottom of the policy, review the possible alerts and governance actions:
 
    ![Ransomware policy](Media/td-policiesransomware-governance.png "Ransomware policies")
 
@@ -1077,40 +1036,40 @@ Here is an example of such user consent:
 
 ### Investigate
 
-1. [] Without even creating policies, Cloud App Security shows you the applications that received permissions from your users:
+1.  Without even creating policies, Cloud App Security shows you the applications that received permissions from your users:
 
    ![App permissions](Media/td-oauth.png "App permissions")
 
-2. [] From this page, you can easily see who granted permissions to those apps, if they are commonly used or their permissions level:
+2.  From this page, you can easily see who granted permissions to those apps, if they are commonly used or their permissions level:
 
    ![App commodity](Media/td-zapiercommodity.png "App commodity")
 
-3. [] If you detect that an application should not be granted access to your environment, you can revoke the app access.
+3.  If you detect that an application should not be granted access to your environment, you can revoke the app access.
    > **IMPORTANT:** This operation will apply to the **entire** organization:
 
    ![App revoke](Media/td-apprevoke.png "App revoke")
 
-4. [] When investigating, you can search for apps rarely used in Office 365 which were granted high privileges and create a **policy** to be automatically alerted when such action is performed:
+4.  When investigating, you can search for apps rarely used in Office 365 which were granted high privileges and create a **policy** to be automatically alerted when such action is performed:
 
    ![App filter](Media/td-appfilter.png "App filter")
 
-5. [] After clicking on the “New policy from search” button, you can see that your filter will be used to create a new policy:
+5.  After clicking on the “New policy from search” button, you can see that your filter will be used to create a new policy:
 
    ![App policy](Media/td-apppolicy.png "App policy")
 
-6. [] Go down on that page and review the possible alerts and governance automatic actions that you can configure:
+6.  Go down on that page and review the possible alerts and governance automatic actions that you can configure:
 
    ![App policy](Media/td-apppolicy-governance.png "App policy")
 
-7. [] To go further in your investigation, let’s now pivot to the “Activity log”:
+7.  To go further in your investigation, let’s now pivot to the “Activity log”:
 
    ![Activity log](Media/td-activitylog.png "Activity log")
 
-8. [] In the activity log, search for "**Consent to application**" activities:
+8.  In the activity log, search for "**Consent to application**" activities:
 
    ![Activity log](Media/td-activitylog-consent01.png "Activity log")
 
-9. [] You will then be able to investigate on who, when and from where your users granted access to applications:
+9.  You will then be able to investigate on who, when and from where your users granted access to applications:
 
    ![Activity log](Media/td-activitylog-consent02.png "Activity log")
 
@@ -1123,29 +1082,29 @@ Here is an example of such user consent:
 Now that we reviewed some of the default detection capabilities of Cloud App Security, you should start creating your own policies.
 Cloud App Security provides by default many has policies templates to start creating your custom policies.
 
-1. [] To create your policies, go to “Policies”:
+1.  To create your policies, go to “Policies”:
 
    ![Policies](Media/td-policies.png "Policies")
 
-2. [] Click on “Create policy” and select the type of policy you want to create:
+2.  Click on “Create policy” and select the type of policy you want to create:
 
    ![Policies types](Media/td-policiestypes.png "Policies types")
 
-3. [] In the policy screen, choose the policy template you want to use:
+3.  In the policy screen, choose the policy template you want to use:
 
    ![Policies templates](Media/td-policiestemplates.png "Policies templates")
 
-4. [] Apply the template:
+4.  Apply the template:
 
    ![Apply template](Media/td-applytemplate.png "Apply template")
 
-5. [] Cloud App Security will then populate the different properties of the policy:
+5.  Cloud App Security will then populate the different properties of the policy:
 
    ![Policy template filter](Media/td-policytemplatefilter.png "Policy template filter")
 
-6. [] Review those properties and customize them if needed.
+6.  Review those properties and customize them if needed.
 
-7. [] Explore other types of policies and review the proposed templates.
+7.  Explore other types of policies and review the proposed templates.
 
 > [!NOTE] **Congratulations**! You have completed the **Threat protection lab**.
 
@@ -1175,15 +1134,15 @@ Using Admin quarantine, you can protect your files in the cloud and remediate p
 
 In this lab, we are going to configure a file policy to apply an **Azure Information Protection** template on documents containing social security numbers. This method could be compared to the **Azure Information Protection Scanner** for documents that are stored on file servers.
 
-1. [] In the Cloud App Security portal, go to **Control** and then click on **Policies.**
+1.  In the Cloud App Security portal, go to **Control** and then click on **Policies.**
 
     ![Open Screenshot](Media/info-policies.png "Policies")
 
-1. [] Create a Policy click on  **File policy**.
+1.  Create a Policy click on  **File policy**.
 
     ![Open Screenshot](Media/info-newpolicy.png "New policy")
 
-1. [] Provide the following settings to that policy:
+1.  Provide the following settings to that policy:
 
     >|||
     >|---------|---------|
@@ -1194,15 +1153,15 @@ In this lab, we are going to configure a file policy to apply an **Azure Informa
 
     ![Open Screenshot](Media/allfilesBox1.png)  
 
-1. [] In the inspection method, select **Data Classification Service**.
+1.  In the inspection method, select **Data Classification Service**.
 
     ![Open Screenshot](Media/info-dcs.png "DCS")
 
-    > [!KNOWLEDGE] **Microsoft Data Classification Service** provides a **unified** information protection experience across Office 365, Azure Information Protection, and Microsoft Cloud App Security.
-    > [!KNOWLEDGE]
-    > [!KNOWLEDGE] The classification service allows you to extend your data classification efforts to the third-party cloud apps protected by Cloud App Security, using the decisions you already made across an even greater number of apps.
+    > :information_source: **Microsoft Data Classification Service** provides a **unified** information protection experience across Office 365, Azure Information Protection, and Microsoft Cloud App Security.
+    > :information_source:
+    > :information_source: The classification service allows you to extend your data classification efforts to the third-party cloud apps protected by Cloud App Security, using the decisions you already made across an even greater number of apps.
 
-1. [] Click on **Choose inspection type** and then on **sensitive information type**.
+1.  Click on **Choose inspection type** and then on **sensitive information type**.
 
     ![Open Screenshot](Media/info-type.png "SSN type")
 
@@ -1213,20 +1172,20 @@ In this lab, we are going to configure a file policy to apply an **Azure Informa
 
     ![SSN type](Media/info-ssn.png "SSN type")
 
-1. [] Click on the **Unmask the last 4 characters of a match** and the **Create an alert for each matching file** checkboxes.
+1.  Click on the **Unmask the last 4 characters of a match** and the **Create an alert for each matching file** checkboxes.
 
     ![Open Screenshot](Media/info-unmask.png "Unmask")
 
-    > [!KNOWLEDGE] In production scenarios, as you will probably have thousands of matches, you will **not** create alerts but use the **policy matches** approach instead.
+    > :information_source: In production scenarios, as you will probably have thousands of matches, you will **not** create alerts but use the **policy matches** approach instead.
 
-1. [] In the Governance actions, click on **Box** and select **Apply classification label**. Select the **Highly Confidental - All Employees** label. 
+1.  In the Governance actions, click on **Box** and select **Apply classification label**. Select the **Highly Confidental - All Employees** label. 
 
-    > [!ALERT] If you are not able to select Azure Information Protection templates, verify that you configured the integration in the prerequisites section or that you waited the 1h for the classifications to sync. In addition log out of the Cloud App Security Portal and log back in and see and if you're able to apply the label. 
+    > :warning: If you are not able to select Azure Information Protection templates, verify that you configured the integration in the prerequisites section or that you waited the 1h for the classifications to sync. In addition log out of the Cloud App Security Portal and log back in and see and if you're able to apply the label. 
 
   ![gov](Media/Boxgovssn.JPG)
 
 
-1. [] Click **Create** to finish the policy creation.
+1.  Click **Create** to finish the policy creation.
 
 ---
 
@@ -1235,15 +1194,15 @@ In this lab, we are going to configure a file policy to apply an **Azure Informa
 
 In this lab, we are going to configure a file policy to quarantine sensitive PDF files that are shared externally, so an admin can review those files and validate if they could or not be shared externally. **Admin quarantine** can also be used to isolate files that should not have been uploaded to cloud storage apps.
 
-1. [] In the Cloud App Security portal, go to **Control** and then click on **Policies.**
+1.  In the Cloud App Security portal, go to **Control** and then click on **Policies.**
 
     ![Open Screenshot](Media/info-policies.png "Policies")
 
-1. [] Create a Polick and click on **File policy** that will determine which files should be placed in quarantine.
+1.  Create a Polick and click on **File policy** that will determine which files should be placed in quarantine.
 
     ![Open Screenshot](Media/info-newpolicy.png "New policy")
 
-1. [] Provide the following settings to that policy:
+1.  Provide the following settings to that policy:
 
     >|Policy name|Files matching all of the following|
     >|---------|---------|
@@ -1251,9 +1210,9 @@ In this lab, we are going to configure a file policy to quarantine sensitive PDF
 
     ![Open Screenshot](Media/info-policy3.png "New policy")
 
-1. [] Check the **Create an alert for each matching file** checkBox. 
+1.  Check the **Create an alert for each matching file** checkBox. 
 
-1. [] In Governance actions of the policy, select **Put in admin quarantine** for Box and click on the **Create** button.
+1.  In Governance actions of the policy, select **Put in admin quarantine** for Box and click on the **Create** button.
 
     ![Unmask](Media/Boxgovadmin.JPG)
 
@@ -1264,55 +1223,55 @@ In this lab, we are going to configure a file policy to quarantine sensitive PDF
 
 We are now going to test our files policies by performing the following actions.
 
-1. [] On @lab.VirtualMachine(Client01).SelectLink, if not done yet, unzip the content of the **Demo files.zip**.
+1.  On @lab.VirtualMachine(Client01).SelectLink, if not done yet, unzip the content of the **Demo files.zip**.
 
-1. [] Go to the **Box** files ```https://app.box.com/folder/0```
+1.  Go to the **Box** files ```https://app.box.com/folder/0```
 
-1. [] Upload the unzipped files to the site.
+1.  Upload the unzipped files to the site.
 
     ![Open Screenshot](Media/info-uploadbox.png "Upload")
 
-1. [] After upload is complete, **share** the PDF document named **Protect with Microsoft Cloud App Security proxy.pdf**
+1.  After upload is complete, **share** the PDF document named **Protect with Microsoft Cloud App Security proxy.pdf**
 
     ![Open Screenshot](Media/info-share1.png "Upload")
 
     ![Open Screenshot](Media/info-share2.png "Upload")
 
-1. [] Cloud App Security will now scan those documents and search for matches to your created policies.
+1.  Cloud App Security will now scan those documents and search for matches to your created policies.
 
     > [!HINT] The scan can take **several minutes** before completion.
 
-1. [] To monitor the evolution of the scan, go back to Cloud App Security, select **Investigate** and open the **Files** page.
+1.  To monitor the evolution of the scan, go back to Cloud App Security, select **Investigate** and open the **Files** page.
 
     ![Open Screenshot](Media/info-files1.png "Search files")
 
-1. [] You can search for the files you uploaded using different criteria, like **file name**, **type**, ... or just look at all the files discovered by Cloud App Security. When a policy match is discovered, you will notice it on this page by looking at the icones next to the file name. You will also have icons related to the applied **Governance action** (AIP label or Admin Quarantine in our lab).
+1.  You can search for the files you uploaded using different criteria, like **file name**, **type**, ... or just look at all the files discovered by Cloud App Security. When a policy match is discovered, you will notice it on this page by looking at the icones next to the file name. You will also have icons related to the applied **Governance action** (AIP label or Admin Quarantine in our lab).
 
     ![Open Screenshot](Media/Boxfilesmatch.png)
 
-1. [] To open the details of the file, click on its name. You can see there the matched policies and the scan status of the files.
+1.  To open the details of the file, click on its name. You can see there the matched policies and the scan status of the files.
 
     ![Scan status](Media/info-files5.png "Scan status")
 
-1. [] You can also view the related governance actions, like applying the Azure Information classification or moving the file to the quarantine folder, at the file level or in the **Governance log**.
+1.  You can also view the related governance actions, like applying the Azure Information classification or moving the file to the quarantine folder, at the file level or in the **Governance log**.
 
     ![Governance log](Media/Boxgovlog.jpg)
 
-1. [] As we configured **Alerts** in our lab, you can also review the related alerts in the **Alerts page**.
+1.  As we configured **Alerts** in our lab, you can also review the related alerts in the **Alerts page**.
 
     ![Alert](Media/Boxalert1.png)
 
     ![Alert](Media/Boxalert2.png)
 
-1. [] If you go back to **Box**, you will also notice that the quarantined files will be replaced by **placeholders**. The original file will be moved to the **Quarantine**.
+1.  If you go back to **Box**, you will also notice that the quarantined files will be replaced by **placeholders**. The original file will be moved to the **Quarantine**.
 
-    > [!KNOWLEDGE]  For Box, the quarantine folder location and user message **can't be customized**. The folder location is the drive of the admin who connected Box to Cloud App Security. For **SharePoint and OneDrive**, the location and the message can be customized in Cloud App Security settings.
+    > :information_source:  For Box, the quarantine folder location and user message **can't be customized**. The folder location is the drive of the admin who connected Box to Cloud App Security. For **SharePoint and OneDrive**, the location and the message can be customized in Cloud App Security settings.
 
     ![Open Screenshot](Media/boxquarantine2.png)
 
     ![Open Screenshot](Media/boxquarantine1.png)
 
-1. [] The other way to review the policy matches is to go back to the **Policies page** and look at the **matches number**.
+1.  The other way to review the policy matches is to go back to the **Policies page** and look at the **matches number**.
 
     ![Matches](Media/info=matches.png)
 
